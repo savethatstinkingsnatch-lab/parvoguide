@@ -1,0 +1,798 @@
+export type Block =
+  | { kind: "p"; text: string; lead?: boolean }
+  | { kind: "h"; text: string }
+  | { kind: "quote"; text: string }
+  | { kind: "note"; tone: "stop" | "fact" | "care"; title: string; text: string }
+  | { kind: "list"; items: string[] }
+  | { kind: "tally" }
+  | { kind: "paths" }
+  | { kind: "take" }
+  | { kind: "scale" }
+  | { kind: "edition" };
+
+export type Chapter = {
+  id: string;
+  numeral: string;
+  kicker: string;
+  title: string;
+  minutes: number;
+  blocks: Block[];
+};
+
+export const CARE_PATHS = [
+  {
+    who: "Villager #1",
+    where: "Clinic 1",
+    title: "Three days, and the monoclonal antibody",
+    detail:
+      "The first to catch it. A three-day stay. A bill over $5,000. Two days later the same clinic said the fluids were ready. They were not.",
+  },
+  {
+    who: "Mrs Sassy Fancy Boots",
+    where: "Clinic 2",
+    title: "Fluids only, on emergency time",
+    detail:
+      "They left at 12:30. The rental counter held them two hours. The dealership took another thirty minutes with a car whose transmission was going bad. They arrived at 5:30 and were put on emergency time, fifteen minutes past regular hours. The ride was rough. She was worse than Brutus, so she went in. She received only fluids, because the emergency prices were exaggerated. About $250.",
+  },
+  {
+    who: "Brutus",
+    where: "Clinic 2, again",
+    title: "Fluids, and a shot",
+    detail:
+      "Brought back to the same clinic. Fluids and a shot. A three-hour wait. $555. He lived. On the way home they stopped at clinic 1 for the fluids that had not been there two days before.",
+  },
+  {
+    who: "The rest",
+    where: "Home",
+    title: "Fluids under the skin, and anti-nausea medicine",
+    detail:
+      "Fluids and anti-nausea medicine at the house, in a tent of skin at the scruff, for the dogs who could be kept there. The dogs who got the next dose in time recovered. Love, rest, and fluids. No extra drug.",
+  },
+] as const;
+
+export const TAKE = [
+  {
+    id: "line",
+    text: "Say it before you sit down: my dog needs an IV line now. We can talk about other drugs after it is running.",
+  },
+  {
+    id: "nausea",
+    text: "Ask for anti-nausea medicine in the same visit, not the next morning. Vomiting pours the fluid back out.",
+  },
+  {
+    id: "split",
+    text: "Ask the price of fluids, nausea control, and nursing by themselves, before one number that folds in a three-day stay.",
+  },
+  {
+    id: "mab",
+    text: "If the monoclonal antibody is in the building, it can be added after the line is in. If it is not, do not wait on a delivery before fluids.",
+  },
+  {
+    id: "abx",
+    text: "Let the veterinarian decide about an antibiotic. It does not kill the virus, and it is not a reason to delay the drip.",
+  },
+  {
+    id: "tent",
+    text: "If fluid is given at home, it goes in a tent of skin at the scruff. For a 60-pound dog that was about 500 mL twice a day, with anti-nausea medicine, until the dog felt better. Start before the dog dies of waiting. Scale to the dog’s weight. Give less if the last pocket is still there.",
+  },
+  {
+    id: "worse",
+    text: "Cold, limp, pale or gray gums, a painful belly, vomiting that will not stop: that is not a night to stay home.",
+  },
+  {
+    id: "vax",
+    text: "Vaccinate the dogs who are still well, today. Do not let anyone sell the shot as a cure for the dog who is already down.",
+  },
+  {
+    id: "iso",
+    text: "Separate the sick dogs. Pick up stool. Bleach what you can actually clean. Keep new puppies off that ground.",
+  },
+] as const;
+
+export const chapters: Chapter[] = [
+  {
+    id: "before",
+    numeral: "I",
+    kicker: "Read this with the phone in reach",
+    title: "This is not a cure",
+    minutes: 3,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "This book will not cure a dog. Canine parvovirus has no kitchen recipe that puts water back into a vein. Left without care, most dogs who get sick with it die. With aggressive care, most live. The difference is not love versus medicine. The dogs in this yard who lived were loved, and they were on fluids.",
+      },
+      {
+        kind: "note",
+        tone: "stop",
+        title: "If a dog is sick right now",
+        text: "Stop reading. Call a veterinarian or an emergency clinic. If the dog is vomiting, has diarrhea, is limp, or will not eat, say that you need intravenous fluids started now. Come back to this page after the line is in.",
+      },
+      {
+        kind: "p",
+        text: "Nothing in these pages is a dose. Nothing here is permission to start a catheter because a chapter made it sound simple. A dirty line, the wrong fluid, or the wrong rate can kill a dog the virus had not finished with. The account you are about to read is one yard, in one drought. It is not a protocol, and it is not a promise.",
+      },
+      {
+        kind: "p",
+        text: "What the yard does teach is narrower, and harder to dodge. Eleven dogs, six and a half months old. Three died of dehydration because fluids were late. People played with the time, blamed a small yard, and said to put them down. The keeper knew they could survive. Eight did. The only factor the keeper credits is that those eight were not allowed to get dehydrated. The whole effort cost about ten thousand dollars. It did not cost fifty-five thousand.",
+      },
+      {
+        kind: "p",
+        text: "Hold those facts in that order. Not the yard. Not the drug. Not a fifty-five-thousand-dollar stay. The vein, before the dog dries out.",
+      },
+    ],
+  },
+  {
+    id: "yard",
+    numeral: "II",
+    kicker: "One keeper’s account",
+    title: "The yard",
+    minutes: 6,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "There were eleven dogs. They were six and a half months old.",
+      },
+      {
+        kind: "p",
+        text: "Coyotes live around that place. It was a drought. The fields were dry enough to lift. When the farmers began to plow, dust kicked into the air and covered the dogs and the ground they lived on. After that, the dogs got sick with parvo.",
+      },
+      {
+        kind: "p",
+        text: "They had been digging holes for a couple of months. The keeper tried to make them stop. They had come from the same womb, and it showed. When one started a hole, the next one out continued it. Then the rest followed, and they dug the rest of it together. It was amazing. The keeper sees it now. If it was not the dust this year, it could have been from a different year, buried, and the digging brought it up.",
+      },
+      {
+        kind: "h",
+        text: "The first night",
+      },
+      {
+        kind: "p",
+        text: "Villager #1 played fine all day. That night he threw up all his food, the food that should have been processed during the day. He threw up in his crate. The next day he did not want to move. He ended up with watery poop. The day after that they took him to the vet, thinking he had a blockage. The vet ran a parvo test. It came back positive.",
+      },
+      {
+        kind: "p",
+        text: "Within a few days Lily and Villager #2 were sick. They refused to eat. They could not hold down any water. By the end of four days every dog was sick the same way. They could not hold water. They stood in the yard like drooling zombies, their eyes sagging from dehydration.",
+      },
+      {
+        kind: "note",
+        tone: "stop",
+        title: "The fluids had to be prescribed",
+        text: "The fluids have to be prescribed by a veterinarian. For a few days they were unattainable. That is why the keeper could not save them all. A person cannot invent the bag. It has to be prescribed, and it has to arrive before the eyes sag.",
+      },
+      {
+        kind: "tally",
+      },
+      {
+        kind: "p",
+        text: "Three of the eleven died. Villager #2 died on the way to the hospital. Lily was put down. Mrs Sassy Fancy Boots died on the floor at home. They did not die because the yard was small, or because a rare drug was missing. They died while the next fluids were still on the road.",
+      },
+      {
+        kind: "note",
+        tone: "stop",
+        title: "They said put them down",
+        text: "People blamed the small yard. People said to euthanize. Eight lived because they were not allowed to dehydrate. Lily was rushed in, already deathly ill, and put down after they said she would probably not recover.",
+      },
+      {
+        kind: "p",
+        text: "The care was not the same for each dog who lived. As soon as the first illness was known, the keeper gave a parvo vaccination. That fact belongs in the story. It is not what saved them. Saving them was fluids, in time. Anti-nausea medicine and rest were how the fluid stayed in. No extra drug was the difference.",
+      },
+      {
+        kind: "paths",
+      },
+      {
+        kind: "p",
+        text: "Villager #1 was sick first. He stayed three days at clinic 1. Lily got sick while he was still there. Then Villager #2, who died on the way to the hospital. Mrs Sassy Fancy Boots was seen at clinic 2, on emergency time, and received only fluids. Brutus was brought back to that same clinic for fluids and a shot, and he lived. She died on the floor at home because the way back took too long. The dogs were six and a half months old. Eight lived. All of it cost about ten thousand dollars. It did not cost fifty-five.",
+      },
+      {
+        kind: "p",
+        text: "Lily and Villager #2 went to the University of Illinois veterinary teaching hospital. Villager #2 died on the way, so they took his body. Cremating him was a few hundred dollars. Lily cost the rest. That bill was about three thousand dollars.",
+      },
+      {
+        kind: "quote",
+        text: "The only factor that saved them was not letting them get dehydrated.",
+      },
+    ],
+  },
+  {
+    id: "virus",
+    numeral: "III",
+    kicker: "What you are actually fighting",
+    title: "What the virus does",
+    minutes: 5,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "Canine parvovirus is a small, hard virus. The strains in dogs today belong to the family called CPV-2, including the variants written 2a, 2b, and 2c. The vaccines in common use are made to cover those variants. This is not the human illness called fifth disease. People do not catch parvo from their dogs. People do carry it from dog to dog on their shoes.",
+      },
+      {
+        kind: "p",
+        text: "It prefers cells that divide quickly. In a puppy or an unprotected dog, that means the lining of the intestine and the bone marrow. The gut stops absorbing and starts to slough. Vomiting and diarrhea follow, often with blood, often with a smell a keeper does not forget. The marrow slows its work on white cells, so bacteria that belong in the gut cross into the blood. The dog feels poisoned because, in a plain sense, the dog is.",
+      },
+      {
+        kind: "p",
+        text: "Very young puppies can take the virus into the heart. That form is less common than the gut form. It is not the story this yard told. The story this yard told was thirst that was not answered.",
+      },
+      {
+        kind: "h",
+        text: "How it moves",
+      },
+      {
+        kind: "p",
+        text: "The time from exposure to illness is often three to seven days. A dog can shed virus in stool before anyone sees a sick face. The amount of stool required to infect the next dog is small. Once the virus is in soil, bedding, or a crack in a floor, it can stay infectious for months, and sometimes longer than a year. Cold weather does not reliably kill it. Most household disinfectants do not either.",
+      },
+      {
+        kind: "p",
+        text: "A veterinarian confirms it with a fecal antigen test, and sometimes with a PCR. A test can miss an early case. A modified-live vaccine given in the days just before can, occasionally, make a test faintly positive. Tests are for the person who is about to treat. They are not a reason to watch a limp dog overnight with an empty vein.",
+      },
+      {
+        kind: "note",
+        tone: "fact",
+        title: "The odds, said carefully",
+        text: "Without treatment, about nine in ten dogs with clinical parvo die. With aggressive veterinary care, survival is often put around eight or nine in ten, and higher in some hospitals. Those are populations, not promises. A dog can be treated properly and still die. A dog can look nearly gone and walk out. This yard ended at three dead and eight alive. That count is true. It is not a rate you can take to another kennel and trust.",
+      },
+    ],
+  },
+  {
+    id: "clock",
+    numeral: "IV",
+    kicker: "Why the three did not come back",
+    title: "They died dry",
+    minutes: 6,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "Parvo empties a dog. Fluid leaves in vomit. Fluid leaves in diarrhea. The dog will not drink, or drinks and gives it back. Potassium falls. Sugar falls, especially in the young, who have little stored. The feet get cold. The gums go from moist to tacky to pale. Then the dog is too tired to stand. Then the dog is gone.",
+      },
+      {
+        kind: "p",
+        text: "That sequence can take a day. In a small puppy it can take a few hours. A careful clinic will still name the virus as the cause. The thing that stops the heart, in the ordinary case, is a body with not enough volume left to circulate.",
+      },
+      {
+        kind: "note",
+        tone: "stop",
+        title: "The keeper’s account of the three",
+        text: "Villager #1 stayed three days and lived. Lily and Villager #2 were rushed to the hospital after a drive for fluids that were not there. Villager #2 died on the way. Lily was put down. Mrs Sassy Fancy Boots had already been given fluids by a vet. She died on the floor at home because the next fluids did not get back in time.",
+      },
+      {
+        kind: "h",
+        text: "The order",
+      },
+      {
+        kind: "p",
+        text: "Villager #1 played fine the day it started. That night he threw up all his food in his crate, food that should have been processed during the day. The next day he would not move, and the poop was watery. The day after that they took him in thinking he had a blockage. The parvo test came back positive. He stayed in the hospital for three days. The bill was five thousand dollars. The keeper asked how long it would be before the rest got sick. Lily became sick while he was still in that hospital. Then Villager #2. Within a few days Lily and Villager #2 refused to eat and could not hold water. By the end of four days they were all sick the same way, drooling, eyes sagging from dehydration. The fluids had to be prescribed by a vet. For a few days they could not be gotten in time.",
+      },
+      {
+        kind: "p",
+        text: "They were told the fluids were ready. They drove an hour and a half. The fluids were not there. After that, Lily and Villager #2 were rushed to the hospital. Villager #2 died on the way. Lily was the runt. They were told she would probably not recover, and that she would probably have a low quality of life. She was put down. That is how the first two died.",
+      },
+      {
+        kind: "p",
+        text: "Mrs Sassy Fancy Boots and Brutus rode to clinic 2 together. The ride was rough on both of them. She was in worse shape, so she was the one taken in. They had left the house at 12:30. The car rental place made them wait two hours for the car. Then the car’s transmission was going bad, and dropping it at the dealership took another thirty minutes. They arrived at 5:30 on the dot and were put on emergency time. Regular hours had closed fifteen minutes earlier. The keeper does not see why 5:30 had to mean emergency prices. She received only fluids, because those prices were exaggerated. The visit was about two hundred and fifty dollars.",
+      },
+      {
+        kind: "p",
+        text: "Brutus was brought back to clinic 2. He received fluids and a shot. They waited three hours. The bill was five hundred fifty-five dollars. He lived. On the way home they stopped again at clinic 1, for the fluids that had not been there two days before. Two days before, that empty shelf is why Lily and Villager #2 had to be rushed to the hospital.",
+      },
+      {
+        kind: "p",
+        text: "By the time they got home with Brutus, Mrs Sassy Fancy Boots was dead. A three-hour wait, and a three-hour round trip, and the stop for the other fluids. Time was the enemy. Nobody close accepts new patients or emergency cases. They had already tried, more than once, when Brutus broke his leg. The closest place was Bradley. The specialist was in Savoy. That leg, by itself, was about a thousand dollars in bills, and a couple of hundred dollars in gas.",
+      },
+      {
+        kind: "h",
+        text: "What playing with time looks like",
+      },
+      {
+        kind: "p",
+        text: "It is not the same thing as the minutes a nurse needs to place a catheter. A drive of an hour and a half to a shelf that is empty, and another drive of an hour and a half to be told to wait three hours, is how a dog who already had fluids still dies on the floor.",
+      },
+      {
+        kind: "list",
+        items: [
+          "Asking how long before the rest get sick, and having Lily go down while Villager #1 is still in the hospital.",
+          "Being told the fluids are ready, and driving an hour and a half to find that they are not.",
+          "Villager #2 dying in the car. Lily put down after they said she would probably not recover.",
+          "A rental counter that holds you two hours, and a dealership that takes thirty more, so you arrive at 5:30 and pay emergency prices.",
+          "Sassy taken in first because she was worse, and given only fluids because those prices were exaggerated.",
+          "Brutus waiting three hours at the same clinic for fluids and a shot.",
+          "A stop back at clinic 1, then home, and Sassy already dead. A three-hour wait on top of a three-hour round trip.",
+        ],
+      },
+      {
+        kind: "p",
+        text: "Remember them by name. Villager #2. Lily. Mrs Sassy Fancy Boots. Not as dogs who were never taken anywhere. As dogs the miles and the waiting got to before the next fluids did.",
+      },
+    ],
+  },
+  {
+    id: "dust",
+    numeral: "V",
+    kicker: "Drought, plows, and what dust can carry",
+    title: "After the fields were turned",
+    minutes: 3,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "The illness showed itself after the plowing started. The keeper’s memory is specific. Drought. Coyotes living around the place. Farmers turning dry fields. Dust kicked into the air, onto the dogs, onto everything. The dogs were six and a half months old.",
+      },
+      {
+        kind: "p",
+        text: "Parvovirus is not a germ that dirt invents when the weather is bad, and a small yard does not invent it either. Dogs shed it in feces. Coyotes and other dogs can carry it through a dry country and leave it where a yard can meet it. It sits in soil because it is hard to kill. A plow in a drought lifts whatever is in that soil and throws it across the dogs. They breathe dust. They lick dusty coats. They drink from bowls the dust has settled into.",
+      },
+      {
+        kind: "p",
+        text: "People blamed the small yard and said to put the dogs down. The yard made it easier for the virus to reach all eleven once it was there. It was not a reason they had to die. The keeper knew they could survive if they were not allowed to dehydrate. Eight did.",
+      },
+      {
+        kind: "p",
+        text: "Do not wait for a field to be turned before you vaccinate. Do not blame a plow, or a coyote, or the size of a yard, and then skip the fluids. The order the keeper saw is part of the record. Dust, then sick dogs, then a choice between water and a death sentence.",
+      },
+    ],
+  },
+  {
+    id: "fluids",
+    numeral: "VI",
+    kicker: "The page to remember",
+    title: "Fluids first",
+    minutes: 7,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "A dog with parvo dies of what it loses. Replace what it loses before the body is empty, and you have done the thing that changes the odds. In this yard that was the only factor the keeper credits. Every drug in the later chapters was extra. None of them replaced the water.",
+      },
+      {
+        kind: "p",
+        text: "A hospital puts that water in a vein: a catheter and a measured drip. That is the right door for a dog who is already flat, cold, or no longer absorbing fluid from under the skin. The dogs who recovered at home got a different door, and the keeper is exact about it. The fluid went under the skin at the scruff of the neck, where the skin is loose. You lift that skin and make a tent. The fluid has to go into the pocket of the tent, the subcutaneous space, so the dog can absorb it. It must not go into the muscle. Muscle is the wrong place. It is not a pocket, it does not absorb the way the space under the skin does, and it is not what saved these dogs.",
+      },
+      {
+        kind: "quote",
+        text: "Lift the scruff. Make a tent. The fluid goes in that pocket, under the skin, so the dog can absorb it. Not into the muscle.",
+      },
+      {
+        kind: "note",
+        tone: "stop",
+        title: "The amount is by weight, and the clock is real",
+        text: "Too little, too late, and the dog dies dry. Too much, or another full dose while the last one is still sitting under the skin, and you have traded dehydration for a fluid imbalance. The amount in this chapter is the one the yard used. A veterinarian may write a different one. Do not invent a third.",
+      },
+      {
+        kind: "h",
+        text: "What goes in the bag",
+      },
+      {
+        kind: "p",
+        text: "The fluid is a balanced isotonic crystalloid. Clinics hang lactated Ringer’s solution, Normosol-R, or Plasma-Lyte. People call these IV fluids because that is how the bag is labeled. Under the skin, it is the same bag, given into the tent. It is not sterile water. It is not salt water from a kitchen. Do not add sugar or potassium to the bag that is going under the skin. Those corrections, when a dog needs them, belong in a vein, where someone can watch the heart.",
+      },
+      {
+        kind: "h",
+        text: "Start, then stay with it",
+      },
+      {
+        kind: "p",
+        text: "The keeper’s dogs weighed about sixty pounds. They needed about 500 milliliters, twice a day, with anti-nausea medicine. That is the amount. Morning and night, into the tent at the scruff. You do not wait to see if they will die first. Before they just die, you do something. Then you keep doing it until they feel better. Not for a number of days someone wrote down. Until they feel better.",
+      },
+      {
+        kind: "quote",
+        text: "Sixty pounds. About 500 milliliters, twice a day, until they feel better. Before they die, you do something.",
+      },
+      {
+        kind: "p",
+        text: "Feeling better is not a single wag while the gums are still sticky. It is a dog who is up, whose gums stay wet between the two doses, who is no longer pouring out more than you are putting in. Until then, you do the thing. Before they die, and until they feel better.",
+      },
+      {
+        kind: "p",
+        text: "A lighter dog needs less. A heavier dog needs more. The same proportion is 500 milliliters for every 60 pounds, twice in the day. A 30-pound dog is half of that, about 250 milliliters each time. The page that follows does the multiplication. It does not add a secret third dose.",
+      },
+      {
+        kind: "p",
+        text: "Before the evening dose, look at the morning pocket. If it is still sitting there, the dog has not absorbed it. Give less, or skip it. A body that is cold does not pull fluid out of the skin. If the pocket never leaves and the dog is getting colder or going limp, stop. That dog needs a vein. Some published clinic sheets use more fluid, more often. More was not what kept these dogs. More, piled onto a pocket that has not absorbed, is how you create a fluid imbalance.",
+      },
+      {
+        kind: "scale",
+      },
+      {
+        kind: "h",
+        text: "In the vein, the clock is slower than people think",
+      },
+      {
+        kind: "p",
+        text: "A dog who is cold, flat, or past about ten percent dry does not get the day’s fluid under the skin. A hospital puts a catheter in a vein. In the 2024 AAHA fluid example of a parvo puppy, the deficit was replaced over about twelve hours, and a puppy’s maintenance was figured near 100 milliliters per kilogram per day, added on top of that rate. After the deficit was in, the rate came down to maintenance, if the puppy was not still pouring fluid out in vomit and diarrhea. Ongoing losses get added. They do not get ignored, and they do not get corrected by opening the roller clamp all the way.",
+      },
+      {
+        kind: "p",
+        text: "A shock bolus in a vein is a veterinarian’s act, given in pieces, with a hand on the gums and the chest between each piece. This book will not print a home instruction for emptying a bag into a vein. Fluid that fast, in the wrong dog, floods the lungs. That is the imbalance on the other side of dehydration. Coughing, open-mouth breathing, sudden restlessness, or swelling after a large dose means stop and get to a clinic. No urine for many hours, gums going sticky again, and the dog’s own skin staying tented means the amount was late or short. Do not wait out of politeness.",
+      },
+      {
+        kind: "note",
+        tone: "stop",
+        title: "The tent is still the place",
+        text: "The milliliters mean nothing if they go into the muscle. Lift the scruff. Make the tent. The pocket under the skin absorbs the dose. A cold, limp dog does not get another pocket. That dog gets a vein.",
+      },
+      {
+        kind: "p",
+        text: "Anti-nausea medicine keeps the dog from pouring the water back out. Medicines in this class include maropitant and ondansetron. This book will not give you a milligram. Ask for nausea control the same day the fluids start.",
+      },
+      {
+        kind: "quote",
+        text: "My dog is vomiting. I think it is parvo. Do not let this dog get dehydrated. Start fluids now. We can talk about the other drugs after the water is in.",
+      },
+      {
+        kind: "p",
+        text: "If the answer is a wait, ask who will start fluids sooner, and go there. The monoclonal antibody can be discussed with the drip already going. The antibiotic can be discussed with the drip already going. The estimate can be printed with the drip already going. The three in this yard did not get that order. They died dry.",
+      },
+      {
+        kind: "note",
+        tone: "care",
+        title: "What fluids do not do",
+        text: "They do not kill the virus. They keep the dog alive while the gut lining grows back, which takes days. During those days the pocket has to be filled again before it runs dry, or a vein has to stay open, and a person has to be watching. Sugar and potassium can still fall. That is why a clinic checks them. A bag left in an empty room is not care.",
+      },
+    ],
+  },
+  {
+    id: "hospital",
+    numeral: "VII",
+    kicker: "One bill, over five thousand dollars",
+    title: "Three days in the hospital",
+    minutes: 4,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "Villager #1 caught parvo first. He was in the hospital for three days. The treatment included the new monoclonal antibody. That stay was five thousand dollars. The whole yard, eight dogs saved, cost about ten thousand dollars. It did not cost fifty-five thousand.",
+      },
+      {
+        kind: "p",
+        text: "Read the number honestly. In many emergency hospitals, three days of parvo care — a catheter, fluids around the clock, anti-nausea medicine, nursing, cleaning, tests — already costs thousands before a newer drug is added. Five thousand dollars for that stay is painful, and in a lot of counties it is believable. It is one dog’s bill. It is not a national price. A different clinic, a smaller dog, or a shorter stay can be less. A collapsed puppy in a city emergency room can be more.",
+      },
+      {
+        kind: "p",
+        text: "Ask what the fluids, the nausea medicine, and the nursing cost before you accept a single number that folds in everything. You are allowed to ask for the line tonight and the decision about a three-day admission in the next sentence. Asking does not make you a worse owner.",
+      },
+      {
+        kind: "h",
+        text: "What those three days are for",
+      },
+      {
+        kind: "p",
+        text: "A vein is kept open. Fluids are matched to how dry the dog is, then to what the dog is still losing. Potassium and glucose are watched, because both fall in this disease, and either one can stop a dog who “has fluids running” if nobody looks. Pain is treated. The hind end is cleaned so the skin does not burn. Food comes back in small amounts once the vomiting eases. Starving a parvo dog for days is an old habit. The gut heals better with a little work to do, when the dog can hold food down.",
+      },
+      {
+        kind: "p",
+        text: "Some dogs need plasma if their blood protein collapses. Some need more than three days. This dog was there for three. That is the fact from the yard. It is not a script.",
+      },
+      {
+        kind: "p",
+        text: "The expensive stay is not the moral opposite of the dogs at home. The hospital dog had a vein and a person awake all night. The dogs at home had a tent of skin at the scruff and someone who would not let that pocket run dry. Both are stories about dehydration. The drug is the next chapter. It is not the reason either dog got water.",
+      },
+    ],
+  },
+  {
+    id: "antibody",
+    numeral: "VIII",
+    kicker: "The new drug, named plainly",
+    title: "The monoclonal antibody",
+    minutes: 5,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "The drug in that hospital stay is a canine parvovirus monoclonal antibody. Elanco developed it. Clinics have known it as CPMA, and it has also gone under the name Trutect. A veterinarian gives it. It is not a bottle that arrives on a porch.",
+      },
+      {
+        kind: "p",
+        text: "For treatment it is one dose, into a vein. The labeled use is for dogs eight weeks of age and older. The antibody is built to bind the virus and keep it from entering cells. That is passive immunity: borrowed defense, fast, and temporary. It does not teach the dog’s immune system the way a vaccine does. It is not a vaccine. A vaccine is not a cheaper version of it.",
+      },
+      {
+        kind: "p",
+        text: "In a controlled challenge study, puppies were infected, tested positive, and on that same day given either the antibody or a placebo, with no other treatment. None of the treated dogs in that study died. Dogs on the placebo did. The treated dogs also stopped vomiting and returned to eating sooner. The company has reported high survival — figures around ninety-three percent — and shorter hospital stays among the patients its clinics tracked. Work in shelters has found shorter stays when the antibody is added to ordinary nursing.",
+      },
+      {
+        kind: "note",
+        tone: "fact",
+        title: "Hold the study the way it was run",
+        text: "Those challenge dogs were treated the day they first tested positive, not after two days of bloody vomit and no fluids. Company numbers are the company’s. An antibody does not grow a new intestine. It does not pull a dog back from dehydration by itself. A dog can receive this drug and still die the way the three died, if the vein stays empty.",
+      },
+      {
+        kind: "p",
+        text: "If a clinic has it, ask two questions. Will you start fluids in this hour? And what does the antibody cost by itself, added to a fluid plan you can actually pay? Earlier is better, because the point of the drug is to limit further damage. Earlier does not mean waiting for a vial to thaw before anyone places a catheter. If the vial is at another hospital, the fluids do not wait for the drive.",
+      },
+      {
+        kind: "p",
+        text: "Veterinarians also have a preventive use of this antibody for dogs who were exposed and are not yet sick. That is a label question and a clinic question. It is not something to invent from a field book.",
+      },
+    ],
+  },
+  {
+    id: "clinic",
+    numeral: "IX",
+    kicker: "One receipt, $555",
+    title: "The smaller bill",
+    minutes: 3,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "Brutus was brought back to clinic 2, the same place that had just seen Mrs Sassy Fancy Boots. They waited three hours before he was taken. He was given fluids and a shot. The bill was five hundred fifty-five dollars.",
+      },
+      {
+        kind: "p",
+        text: "That is a different building from a three-day ward, and a different kind of bill. An exam, a test, an antibiotic shot, fluids, and something for nausea can land near that number in plenty of practices. It can also land somewhere else. Treat $555 as this yard’s receipt, not as a price you were promised.",
+      },
+      {
+        kind: "p",
+        text: "The antibiotic needs a clean sentence. Parvovirus is a virus. Antibiotics do not kill it. They are there because a damaged gut lets bacteria into the blood, and a dog with few white cells cannot fight them off. One dog in this yard got that shot. The dogs who recovered at home did not. This book will not tell you the antibiotic saved the eleven, and it will not tell you that skipping it is a clever economy. A veterinarian looks at how sick the dog is and whether the dog is staying. You watch them decide — and you still insist the fluids are already running.",
+      },
+      {
+        kind: "p",
+        text: "The smaller bill is also proof that “doing something” is not always the five-thousand-dollar door. Ask for the smaller plan by name: fluids, nausea control, and whatever else they believe this dog needs today. Then ask whether the dog is too sick for it. A dog who is cold, collapsed, or still a very young puppy is a poor candidate for going home on hope. Honest outpatient plans are rechecks, not one shot and a disappearance.",
+      },
+    ],
+  },
+  {
+    id: "home",
+    numeral: "X",
+    kicker: "What the rest actually recovered on",
+    title: "Love, rest, and fluids",
+    minutes: 5,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "The rest of the dogs recovered on fluids given under the skin, and on anti-nausea medicine. No extra treatments. The keeper’s words for everything around that are love, rest, and not letting them dehydrate.",
+      },
+      {
+        kind: "h",
+        text: "The tent at the scruff",
+      },
+      {
+        kind: "p",
+        text: "The place is the loose skin at the back of the neck, the scruff. You lift it until it makes a tent. That tent is a pocket of subcutaneous space, the space under the skin and above the muscle. The fluid is introduced into that pocket. The dog absorbs it from there. If the fluid goes into the muscle instead, it is in the wrong tissue. It is not sitting where it can be taken up the way a subcutaneous pocket is taken up. The keeper is plain about this. The pocket. Not the muscle.",
+      },
+      {
+        kind: "p",
+        text: "You can see it when it is right. The skin rises in a soft lump as the pocket fills, and over the next hours the lump eases as the dog absorbs it. You do it again before the dog is dry, not after. Anti-nausea medicine is what keeps vomiting from emptying them faster than the pocket can fill them. Love is the person who stays and does it again. Rest is a quiet room. Those are the treatments. They are not a stack of extra drugs.",
+      },
+      {
+        kind: "p",
+        text: "Do not sweeten that into a different story. They are not saying the dogs healed because they were cherished instead of treated. And they are not saying a bag of fluid stabbed at random into a neck is the same thing as a tent. The eight lived because they were not allowed to get dehydrated, and the fluid that prevented it was in that pocket.",
+      },
+      {
+        kind: "p",
+        text: "That is the lesson the yard is allowed to teach. The monoclonal antibody was one dog’s care. The antibiotic was one dog’s care. The group at home did not get a secret third product. They got the part of parvo medicine that has existed for decades: replace the water, stop the vomiting, give the gut days, and do not leave the dog alone in it.",
+      },
+      {
+        kind: "note",
+        tone: "stop",
+        title: "This chapter is not a how-to",
+        text: "A wrong fluid, a dirty needle, or fluid pushed into muscle instead of the pocket can hurt a dog parvo had not finished with. Have a veterinarian show you the tent the first time. Use the weight and the eight-hour clock in the fluids chapter, and give less or nothing if the last pocket is still sitting there. If the dog is cold, limp, or the lump is not absorbing, stop and get fluid into a vein.",
+      },
+      {
+        kind: "h",
+        text: "The turn that means drive",
+      },
+      {
+        kind: "list",
+        items: [
+          "Ears or feet going cold.",
+          "Gums pale, gray, or sticky.",
+          "A dog who cannot stand.",
+          "Vomiting that will not stop after anti-nausea medicine.",
+          "A belly that hurts to the touch.",
+          "More blood than before, or no urine.",
+        ],
+      },
+      {
+        kind: "p",
+        text: "That is not a night for love to out-argue the body. That is a drive back to a building with a cage and a person awake.",
+      },
+      {
+        kind: "p",
+        text: "Nursing that does help, once a veterinarian’s plan is already in motion: warmth without cooking the dog, water available but not forced down a throat that is still throwing up, tiny meals after the nausea is controlled, and a floor you can bleach. Pouring a large volume of an oral electrolyte into a vomiting dog wastes the hour and delays the vein. The mouth is the wrong door when the stomach will not keep the water.",
+      },
+    ],
+  },
+  {
+    id: "shot",
+    numeral: "XI",
+    kicker: "The vaccination, put in its place",
+    title: "The shot is not the fluids",
+    minutes: 4,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "The keeper gave a parvo vaccination as soon as the first dog was known to be sick. That was the right kind of hurry for the dogs who were not yet down. It is the wrong story about the dogs who were.",
+      },
+      {
+        kind: "p",
+        text: "A modified-live parvo vaccine can protect a susceptible dog in about three to five days. During outbreaks, shelters vaccinate healthy dogs immediately for that reason. The shot races the incubation period. In a dog whose mother’s antibodies are no longer in the way, one dose often starts protection. Puppies are harder. Maternal antibody blocks the vaccine for weeks, which is why puppies need a series: usually beginning around six to eight weeks, then every two to four weeks until at least sixteen weeks, and often out to eighteen or twenty weeks where the risk is high. An adult already on schedule is a different animal from a puppy on the first shot of three.",
+      },
+      {
+        kind: "p",
+        text: "A vaccine does not put water under the skin or into a vein. It does not stop diarrhea that has already started. It does not repair bone marrow. It is not what the keeper credits for the dogs who recovered. Those dogs were not allowed to dehydrate. At home, that meant fluid in a tented pocket at the scruff, and medicine so they would stop vomiting it away.",
+      },
+      {
+        kind: "note",
+        tone: "care",
+        title: "Keep both facts, in this order",
+        text: "Vaccinate the dogs who are still well, the day you know parvo is in the yard. Do it because three to five days is a real window, and dust does not wait. Then go to the sick ones and talk about fluids, not about the syringe you just used on their kennel-mates.",
+      },
+      {
+        kind: "p",
+        text: "Do not let anyone sell you the shot as a cure they can give instead of a line. Do not let this chapter talk you out of vaccines in a quiet year. The series, given before the plow and before the dust, is how a yard stays boring. Boring is the goal.",
+      },
+    ],
+  },
+  {
+    id: "ground",
+    numeral: "XII",
+    kicker: "What you can clean, and what you cannot",
+    title: "The ground",
+    minutes: 3,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "You cannot bleach a field. You can stop tracking the field through the house.",
+      },
+      {
+        kind: "p",
+        text: "Parvovirus lives in stool. Pick up every stool and bag it. Keep the sick dogs on a surface you can actually wash. Dirt, gravel, and cracked wood hold the virus. Sun and time lower the amount outdoors. They do not make a freshly contaminated yard safe for a new puppy. Months is a reasonable fear. Longer than a year is not a paranoid one. A hole dug this year can open what a sick dog left in another year. The dogs in this yard had been digging for a couple of months, one starting a hole and the next one out finishing it, and then the rest following. The dust of the drought may have carried it. The ground they opened may have been holding it already. Ask a veterinarian before a half-vaccinated pup is allowed onto that ground.",
+      },
+      {
+        kind: "p",
+        text: "On a hard surface, clean the filth off first. Bleach does not work through feces. Then use ordinary household bleach, the kind that is about five to six percent sodium hypochlorite, diluted one part bleach to thirty-two parts water. Keep the surface wet for about ten minutes. Accelerated hydrogen peroxide products whose labels name parvovirus are the other common choice, and some of them tolerate a little dirt better than bleach does. Do not bet a puppy on a “kennel cleaner” that never says parvovirus on the bottle.",
+      },
+      {
+        kind: "p",
+        text: "Separate shoes, bowls, bedding, and the person who just held the sick dog. Wash hands. Change clothes before you touch a dog who is still well. You are not protecting yourself from a human disease. You are protecting the next dog from your boots. The vaccine and the bleach do the same kind of job: they shrink how much virus reaches a dog who is not already fighting it. Neither one rehydrates the dog who is.",
+      },
+    ],
+  },
+  {
+    id: "three",
+    numeral: "XIII",
+    kicker: "Nothing on this page is for sale",
+    title: "For the three",
+    minutes: 2,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "Villager #2, Lily, and Mrs Sassy Fancy Boots are not in the yard.",
+      },
+      {
+        kind: "p",
+        text: "Villager #1 stayed three days. The keeper asked how long before the rest would get sick. Lily became sick while he was still in the hospital. Then Villager #2. They were told the fluids were ready. The drive was an hour and a half. The fluids were not there. Lily and Villager #2 were rushed to the hospital after that. Villager #2 died on the way. Lily was the runt, and she was put down after they were told she would probably not recover and would probably have a low quality of life. That is how the first two died. Mrs Sassy Fancy Boots rode to clinic 2 with Brutus. The ride was rough. She was worse, so she went in. They had left at 12:30. The rental counter held them two hours, and the dealership took another thirty minutes with a car whose transmission was going bad. They arrived at 5:30 and were put on emergency time, fifteen minutes past regular hours. She received only fluids, about two hundred and fifty dollars, because the emergency prices were exaggerated. Brutus was brought back to that same clinic for fluids and a shot. On the way home they stopped at clinic 1 for the fluids that had not been there two days before. By the time they got home, Sassy was dead. A three-hour wait on top of a three-hour round trip. Time was the enemy. Nobody close takes a new patient or an emergency. When Brutus broke his leg, the closest place was Bradley, and the specialist was in Savoy. That was about a thousand dollars, and a couple of hundred in gas.",
+      },
+      {
+        kind: "p",
+        text: "Eight lived. Only two of the eleven were treated at a clinic. All eight who lived were treated at the house, on fluids and anti-nausea medicine, and nothing else. The only factor the keeper names is dehydration, prevented. Survival is not proof that the cheapest path was right for the sickest dog. Death is not proof that the keeper failed to love them. People said the yard was too small and the dogs should be put down. The keeper knew they could survive. Eight did. Three dried out while time was wasted. Both of those facts are true, and neither one is a lie you get to tell a person burying a dog.",
+      },
+      {
+        kind: "p",
+        text: "If you are reading this with a dog in the car, you already know which chapter matters. Fluids first. The rest of the book will wait. If you are reading this after, and the dog is gone, the wait is the thing to be angry at. Not the fact that you are not a hospital. Not the dust, by itself. Not a shot you did or did not give. The clock. Three dogs dried out while time was spent on something other than a vein.",
+      },
+      {
+        kind: "quote",
+        text: "This page is for Villager #2, for Lily, and for Mrs Sassy Fancy Boots.",
+      },
+    ],
+  },
+  {
+    id: "take",
+    numeral: "XIV",
+    kicker: "A list to hold at the counter",
+    title: "Take this page in",
+    minutes: 3,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "Check a line if it helps you remember it. Nothing below is a dose. If the person who can see your dog contradicts a line, believe the person. They can hear the heart. A list cannot.",
+      },
+      {
+        kind: "take",
+      },
+    ],
+  },
+  {
+    id: "sources",
+    numeral: "XV",
+    kicker: "What is memory, and what is medicine",
+    title: "Where this came from",
+    minutes: 4,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "Eight of the eleven lived. Villager #1 and Brutus were treated at clinics and lived. The other six of those eight were kept at the house on fluids and anti-nausea medicine. Lily, Villager #2, and Mrs Sassy Fancy Boots were taken for care too. The next fluids did not get back in time.",
+      },
+      {
+        kind: "h",
+        text: "The odds in this yard",
+      },
+      {
+        kind: "p",
+        text: "Eight lived. Three died. Eleven dogs. Eight of eleven is the count. It is not a promise for the next yard, and it is not a smaller number than it was. Anyone who says the dogs were not taken care of is not describing what happened here.",
+      },
+      {
+        kind: "note",
+        tone: "fact",
+        title: "For anyone who asks",
+        text: "Villager #1 stayed three days at clinic 1 and lived. Brutus was brought back to clinic 2, waited three hours, and lived after fluids and a shot. Lily got sick while Villager #1 was still admitted. Two days after clinic 1 had no fluids, she and Villager #2 were rushed to the hospital. Villager #2 died on the way. Lily was put down. Mrs Sassy Fancy Boots was seen first at clinic 2, only fluids, about two hundred and fifty dollars, because a 5:30 arrival was billed as emergency time. She was dead when they got home with Brutus, after the wait, the round trip, and the stop back at clinic 1.",
+      },
+      {
+        kind: "quote",
+        text: "Eight of eleven lived. Sassy had already received fluids. She died on the floor because the way back took too long.",
+      },
+      {
+        kind: "p",
+        text: "The bills are earlier in the book. Villager #1’s stay at clinic 1 was five thousand dollars. Mrs Sassy Fancy Boots’s emergency visit at clinic 2 was about two hundred and fifty dollars, fluids only. Brutus’s return to that clinic was five hundred fifty-five dollars, fluids and a shot, after three hours of waiting. She died at home before the next fluids arrived. The whole effort cost about ten thousand dollars. It did not cost fifty-five thousand. The dogs who got the next dose in time got better.",
+      },
+      {
+        kind: "p",
+        text: "The rest of this chapter is the keeper’s account set next to ordinary published medicine. The count above is the part to hand to a neighbor. The dogs were cared for. Eight of them are the proof.",
+      },
+      {
+        kind: "p",
+        text: "The medicine around that account is the ordinary published picture of this disease. It is not a study of these eleven dogs.",
+      },
+      {
+        kind: "list",
+        items: [
+          "Untreated clinical parvovirus kills about nine in ten dogs. With aggressive care, survival is commonly about eight or nine in ten. Clinics, and summaries of the disease published alongside the antibody, repeat those figures. They are not a guarantee.",
+          "Elanco’s Canine Parvovirus Monoclonal Antibody is a USDA-licensed veterinary product, given intravenously for treatment, labeled for dogs eight weeks and older. In the controlled challenge work described by the company and by AVMA News, treated dogs had no deaths and recovered faster than placebo dogs when the product was the only drug and it was given the day of the first positive test. Later clinic summaries have reported survival around ninety-three percent and shorter stays. The drug does not replace fluids.",
+          "The yard’s fluid amount, for the dogs who stayed home, was about 500 milliliters twice a day for a dog of about 60 pounds, into a tent of skin at the scruff, with anti-nausea medicine. It was started before the dog died of dehydration, and it was continued until the dog felt better. The book scales that proportion to other weights. It is the keeper’s account, not a national dose.",
+          "Other published outpatient sheets use different volumes. Colorado State’s protocol describes about 120 milliliters per kilogram per day under the skin in three doses, and says to give less if the last pocket has not absorbed, and not to add sugar or potassium to that bag. The 2024 AAHA fluid example of a parvo puppy replaced a deficit in a vein over about twelve hours. A dog who is cold or flat needs that vein. This yard did not use the larger sheet. Do not stack the two plans together.",
+          "Outpatient care exists for dogs who are not crashing. It still means fluids, nausea control, and a plan to come back. It is a veterinarian’s plan, not a shopping list.",
+          "Modified-live parvovirus vaccines protect susceptible dogs in roughly three to five days. Shelter-medicine programs, including Koret and the University of Wisconsin–Madison, and the AAHA shelter vaccination guidance, treat immediate vaccination of healthy dogs as outbreak control. Puppies need a series because maternal antibody blocks the shot. A vaccine does not treat a dog already in clinical parvo.",
+          "The virus persists in the environment for months or longer. After organic matter is removed, household bleach diluted about one to thirty-two, left wet for about ten minutes, is the classic way to kill it on a hard surface. You cannot bleach a field.",
+        ],
+      },
+      {
+        kind: "p",
+        text: "If a sentence in this book and a veterinarian standing over your dog disagree, believe the veterinarian. Close the book. Ask them to start the line.",
+      },
+    ],
+  },
+  {
+    id: "rights",
+    numeral: "XVI",
+    kicker: "Who owns this",
+    title: "The rights",
+    minutes: 2,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "This book belongs to Jessica McIntosh. The yard, the count, and the words are not a free text for someone else to print and sell.",
+      },
+      {
+        kind: "edition",
+      },
+      {
+        kind: "p",
+        text: "The reading copy stays open. Neighbors, and anyone who called the dogs neglected, can be shown the record. Eight of eleven lived. That page is not locked.",
+      },
+      {
+        kind: "note",
+        tone: "care",
+        title: "An account is not a license",
+        text: "These pages are an account. They are not a license to practice veterinary medicine, and they are not a dose. The warnings in the front of the book stay in force.",
+      },
+      {
+        kind: "p",
+        text: "Copyright 2026, Jessica McIntosh. All rights reserved. No part of this book may be copied for sale without her leave. Reading it, and handing the count to someone who asked whether the dogs were cared for, is allowed.",
+      },
+    ],
+  },
+];
+
+export const EDITION = {
+  year: 2026,
+  holder: "Jessica McIntosh",
+};

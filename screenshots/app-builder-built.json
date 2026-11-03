@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Eleven Dogs",
+      "hasCanvas": false,
+      "bodyTextLen": 1050,
+      "bodyTextHash": "42e9b353cd79d3fd26985842cdec3ccdf7491b664baa2f8fa412e591dd136cf3",
+      "bodyTextPrefix": "A FIELD BOOK Eleven Dogs Cover I This is not a cure II The yard ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Eleven Dogs",
+      "hasCanvas": false,
+      "bodyTextLen": 683,
+      "bodyTextHash": "bb0a29aaefd56bc7f2223e6596ae0856bdfff51c2b8ecaca563968e11c526cc7",
+      "bodyTextPrefix": "Eleven Dogs Not a prescription. A sick dog needs a veterinarian,",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

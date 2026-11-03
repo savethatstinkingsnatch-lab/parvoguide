@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f3ecdf;
+  --color-paper-2: #e7dccb;
+  --color-ink: #221c16;
+  --color-muted: #6e6256;
+  --color-line: #d8ccba;
+  --color-clay: #8c3d2e;
+  --color-clay-soft: #f3e4dc;
+  --font-display: "Fraunces", "Iowan Old Style", Palatino, "Palatino Linotype", serif;
+  --font-body: "Source Serif 4", Palatino, "Palatino Linotype", "Book Antiqua", serif;
+  --radius-book: 2px;
+}
+
+:root {
+  --reading: 1.125rem;
+}
+
+[data-size="sm"] {
+  --reading: 1.02rem;
+}
+
+[data-size="lg"] {
+  --reading: 1.28rem;
+}
+
+[data-theme="night"] {
+  --color-paper: #14110e;
+  --color-paper-2: #221c17;
+  --color-ink: #f3ecdf;
+  --color-muted: #c4b6a6;
+  --color-line: #3d342c;
+  --color-clay: #e4a894;
+  --color-clay-soft: #2c221c;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100%;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  ::selection {
+    background: var(--color-clay);
+    color: var(--color-paper);
+  }
+}
+
+.read {
+  font-size: var(--reading);
+  line-height: 1.55;
+}
+
+.lead {
+  display: flow-root;
+}
+
+.lead::first-letter {
+  font-family: var(--font-display);
+  float: left;
+  font-size: 2.6em;
+  line-height: 0.9;
+  padding: 0.08em 0.14em 0 0;
+  color: var(--color-clay);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-in {
+    animation: pagein 220ms ease;
+  }
+
+  @keyframes pagein {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.7in;
+  }
+
+  html {
+    --color-paper: #fff;
+    --color-paper-2: #fff;
+    --color-ink: #221c16;
+    --color-muted: #444;
+    --color-line: #bbb;
+    --color-clay: #8c3d2e;
+    --color-clay-soft: #fff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-cover {
+    break-after: page;
+  }
+
+  .print-chapter {
+    break-before: page;
+  }
+
+  .print-book aside,
+  .print-book blockquote {
+    break-inside: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-in {
+    animation: none;
+  }
+}
