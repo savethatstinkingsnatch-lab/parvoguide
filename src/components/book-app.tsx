@@ -60,44 +60,6 @@ function Paths() {
   );
 }
 
-function FluidScale() {
-  const [lb, setLb] = useState("60");
-  const pounds = Number(lb);
-  const valid = Number.isFinite(pounds) && pounds >= 1 && pounds <= 250;
-  const dose = valid ? Math.round((pounds * 500) / 60 / 5) * 5 : 0;
-
-  return (
-    <div className="my-8 border border-line bg-paper-2 px-5 py-5">
-      <p className="font-display text-xl text-ink">Amount for this dog</p>
-      <p className="mt-2 text-sm text-muted">
-        Scaled from the yard. A 60-pound dog got about 500 mL twice a day. Same proportion for another weight. Rounded to the nearest 5 mL.
-      </p>
-      <label className="mt-4 block text-sm text-muted" htmlFor="dog-lb">
-        Weight in pounds
-      </label>
-      <input
-        id="dog-lb"
-        inputMode="decimal"
-        value={lb}
-        onChange={(event) => setLb(event.target.value)}
-        className="mt-1 h-12 w-full border border-line bg-paper px-3 text-ink"
-      />
-      {valid ? (
-        <div className="mt-4 space-y-2 text-ink">
-          <p>
-            About {dose} mL in the morning and about {dose} mL at night, into the tent at the scruff, until the dog feels better. Start before the dog dies of waiting. Anti-nausea medicine on those same days, so the dog does not vomit the benefit away.
-          </p>
-          <p className="text-muted">
-            If the last pocket is still there at the next dose, give less or skip it. A cold, limp dog needs a vein, not a bigger pocket.
-          </p>
-        </div>
-      ) : (
-        <p className="mt-4 text-ink">Enter a weight between 1 and 250 pounds.</p>
-      )}
-    </div>
-  );
-}
-
 function Edition() {
   return (
     <div className="my-8 border border-line bg-paper-2 px-5 py-5">
@@ -197,7 +159,6 @@ function Blocks({ blocks }: { blocks: Block[] }) {
         }
         if (block.kind === "tally") return <Tally key={index} />;
         if (block.kind === "paths") return <Paths key={index} />;
-        if (block.kind === "scale") return <FluidScale key={index} />;
         if (block.kind === "edition") return <Edition key={index} />;
         if (block.kind === "take") return <TakeList key={index} />;
         return null;
@@ -242,7 +203,7 @@ export function BookApp() {
   useEffect(() => {
     if (!ready) return;
     localStorage.setItem(PLACE_KEY, String(place));
-    document.title = chapter ? `${chapter.title} — Eleven Dogs` : "Eleven Dogs";
+    document.title = chapter ? `${chapter.title} — Parvo: Eleven Dogs` : "Parvo: Eleven Dogs";
     window.scrollTo(0, 0);
   }, [ready, place, chapter]);
 
@@ -280,7 +241,7 @@ export function BookApp() {
   const rail = (
     <nav aria-label="Chapters" className="flex flex-col gap-1">
       <button type="button" onClick={() => { setPlace(0); setToc(false); }} className="px-3 py-2 text-left">
-        <span className="block font-display text-lg leading-tight text-ink">Eleven Dogs</span>
+        <span className="block font-display text-lg leading-tight text-ink">Parvo: Eleven Dogs</span>
         <span className="text-sm text-muted">Cover</span>
       </button>
       {chapters.map((item, index) => {
@@ -323,7 +284,7 @@ export function BookApp() {
                 <List className="h-5 w-5" />
               </button>
               <p className="min-w-0 flex-1 truncate text-sm text-muted">
-                {chapter ? `${chapter.numeral}  ${chapter.title}` : "Eleven Dogs"}
+                {chapter ? `${chapter.numeral}  ${chapter.title}` : "Parvo: Eleven Dogs"}
               </p>
               <button
                 type="button"
@@ -362,8 +323,9 @@ export function BookApp() {
           {place === 0 ? (
             <main className="page-in px-5 pb-24 pt-12 lg:px-10 lg:pt-20">
               <div className="mx-auto max-w-prose">
-                <p className="text-xs tracking-widest text-clay">A FIELD BOOK</p>
+                <p className="text-xs tracking-widest text-clay">THE EDUCATION REVOLUTION POCKET GUIDE, VOLUME 14</p>
                 <h1 className="mt-4 font-display text-6xl leading-none text-ink sm:text-7xl">Eleven Dogs</h1>
+                <p className="mt-4 text-sm text-muted">by Blue and the Awesome Dudes</p>
                 <div className="mt-6 h-px w-24 bg-clay" />
                 <p className="mt-6 font-display text-2xl leading-snug text-ink">
                   Canine parvovirus, from a yard that lost three — and why the three died of dehydration, not of a missing drug.
@@ -371,8 +333,8 @@ export function BookApp() {
                 <p className="mt-6 text-lg leading-relaxed text-muted">
                   Eleven dogs, six and a half months old. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000, because they were not allowed to dehydrate. Fluid in a tent of skin at the scruff. Not in the muscle.
                 </p>
-                <p className="mt-8 font-display text-xl italic text-clay">For Villager #2, for Lily, and for Mrs Sassy Fancy Boots.</p>
-                <p className="mt-4 text-sm text-muted">The rights belong to Jessica McIntosh.</p>
+                <p className="mt-8 font-display text-xl italic text-clay">Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.</p>
+                <p className="mt-4 text-sm text-muted">The rights belong to Blue and the Awesome Dudes.</p>
                 <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                   <button
                     type="button"
@@ -453,6 +415,10 @@ export function BookApp() {
               </article>
             </main>
           ) : null}
+
+          <footer className="mx-auto max-w-prose px-5 pb-24 pt-2 text-sm leading-relaxed text-muted lg:px-10 lg:pb-10">
+            Privacy: This guide does not collect your name, email, or any personal information. Checklist marks are saved only on your own device.
+          </footer>
 
           {place > 0 ? (
             <nav className="fixed inset-x-0 bottom-0 z-20 flex border-t border-line bg-paper lg:hidden" aria-label="Turn page">

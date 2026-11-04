@@ -7,7 +7,6 @@ export type Block =
   | { kind: "tally" }
   | { kind: "paths" }
   | { kind: "take" }
-  | { kind: "scale" }
   | { kind: "edition" };
 
 export type Chapter = {
@@ -73,7 +72,7 @@ export const TAKE = [
   },
   {
     id: "tent",
-    text: "If fluid is given at home, it goes in a tent of skin at the scruff. For a 60-pound dog that was about 500 mL twice a day, with anti-nausea medicine, until the dog felt better. Start before the dog dies of waiting. Scale to the dog’s weight. Give less if the last pocket is still there.",
+    text: "If a veterinarian sends fluids home, they go in a tent of skin at the scruff, in the amount and schedule the vet writes for your dog. Ask the vet to show you how. Ask how often to come back for a recheck.",
   },
   {
     id: "worse",
@@ -81,7 +80,7 @@ export const TAKE = [
   },
   {
     id: "vax",
-    text: "Vaccinate the dogs who are still well, today. Do not let anyone sell the shot as a cure for the dog who is already down.",
+    text: "Vaccinate the dogs who are still well, today. Only vaccinate dogs that are healthy. Never give a vaccine to a dog that is already sick. Ask your vet first. Do not let anyone sell the shot as a cure for the dog who is already down.",
   },
   {
     id: "iso",
@@ -97,6 +96,12 @@ export const chapters: Chapter[] = [
     title: "This is not a cure",
     minutes: 3,
     blocks: [
+      {
+        kind: "note",
+        tone: "stop",
+        title: "Disclaimer",
+        text: "This book is one family's true story and general information. It is not veterinary advice. Parvo is an emergency. Only a licensed veterinarian can examine, diagnose, prescribe, or set a dose for your dog. If anything here disagrees with your veterinarian, follow your veterinarian. Blue and the Awesome Dudes are not responsible for any outcome.",
+      },
       {
         kind: "p",
         lead: true,
@@ -123,8 +128,43 @@ export const chapters: Chapter[] = [
     ],
   },
   {
-    id: "yard",
+    id: "stay-safe",
     numeral: "II",
+    kicker: "Before you do anything else",
+    title: "Stay safe",
+    minutes: 3,
+    blocks: [
+      {
+        kind: "p",
+        lead: true,
+        text: "Signs of parvo: tiredness, not eating, vomiting, diarrhea (often bloody, with a strong smell), fever or a cold body, and a painful belly. Any puppy with these signs needs a veterinarian today.",
+      },
+      {
+        kind: "h",
+        text: "Do not give",
+      },
+      {
+        kind: "list",
+        items: [
+          "Human medicines: Pepto-Bismol, ibuprofen (Advil), naproxen (Aleve), acetaminophen (Tylenol), or aspirin. They can poison dogs or cause bleeding.",
+          "Imodium (loperamide): it can be dangerous, especially in collies, shepherds, and other herding breeds, and it can hide worsening.",
+          "Home cures: colloidal silver, garlic, ivermectin, essential oils, bleach drinks, or online parvo cures. None of them cure parvo, and some are poisons.",
+          "Don't force water or electrolyte drinks into a vomiting dog. It goes into the lungs or comes back up.",
+        ],
+      },
+      {
+        kind: "p",
+        text: "Puppies: keep them away from unknown dogs, dog parks, pet store floors, and rest stops until your vet says the vaccine series is complete.",
+      },
+      {
+        kind: "p",
+        text: "Poison help: ASPCA Animal Poison Control, (888) 426-4435 (a fee may apply).",
+      },
+    ],
+  },
+  {
+    id: "yard",
+    numeral: "III",
     kicker: "One keeper’s account",
     title: "The yard",
     minutes: 6,
@@ -189,6 +229,10 @@ export const chapters: Chapter[] = [
         text: "Lily and Villager #2 went to the University of Illinois veterinary teaching hospital. Villager #2 died on the way, so they took his body. Cremating him was a few hundred dollars. Lily cost the rest. That bill was about three thousand dollars.",
       },
       {
+        kind: "p",
+        text: "In the keeper's view:",
+      },
+      {
         kind: "quote",
         text: "The only factor that saved them was not letting them get dehydrated.",
       },
@@ -196,7 +240,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "virus",
-    numeral: "III",
+    numeral: "IV",
     kicker: "What you are actually fighting",
     title: "What the virus does",
     minutes: 5,
@@ -236,7 +280,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "clock",
-    numeral: "IV",
+    numeral: "V",
     kicker: "Why the three did not come back",
     title: "They died dry",
     minutes: 6,
@@ -308,7 +352,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "dust",
-    numeral: "V",
+    numeral: "VI",
     kicker: "Drought, plows, and what dust can carry",
     title: "After the fields were turned",
     minutes: 3,
@@ -328,13 +372,13 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "Do not wait for a field to be turned before you vaccinate. Do not blame a plow, or a coyote, or the size of a yard, and then skip the fluids. The order the keeper saw is part of the record. Dust, then sick dogs, then a choice between water and a death sentence.",
+        text: "Do not wait for a field to be turned before you vaccinate. Do not blame a plow, or a coyote, or the size of a yard, and then skip the fluids. The order the keeper saw is part of the record. Dust, then sick dogs, then a choice between water and a death sentence. No one can prove the plow dust carried the virus. Parvo spreads through infected stool, soil, shoes, and other dogs. That is what to guard against.",
       },
     ],
   },
   {
     id: "fluids",
-    numeral: "VI",
+    numeral: "VII",
     kicker: "The page to remember",
     title: "Fluids first",
     minutes: 7,
@@ -355,8 +399,8 @@ export const chapters: Chapter[] = [
       {
         kind: "note",
         tone: "stop",
-        title: "The amount is by weight, and the clock is real",
-        text: "Too little, too late, and the dog dies dry. Too much, or another full dose while the last one is still sitting under the skin, and you have traded dehydration for a fluid imbalance. The amount in this chapter is the one the yard used. A veterinarian may write a different one. Do not invent a third.",
+        title: "Do not invent the amount",
+        text: "Too little, too late, and the dog dies dry. Too much, or another full dose while the last one is still sitting under the skin, and you have traded dehydration for a fluid imbalance. The amount is what a veterinarian writes for that dog. Do not invent one.",
       },
       {
         kind: "h",
@@ -372,26 +416,15 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "The keeper’s dogs weighed about sixty pounds. They needed about 500 milliliters, twice a day, with anti-nausea medicine. That is the amount. Morning and night, into the tent at the scruff. You do not wait to see if they will die first. Before they just die, you do something. Then you keep doing it until they feel better. Not for a number of days someone wrote down. Until they feel better.",
-      },
-      {
-        kind: "quote",
-        text: "Sixty pounds. About 500 milliliters, twice a day, until they feel better. Before they die, you do something.",
+        text: "The keeper’s dogs weighed about sixty pounds. One veterinarian wrote about 500 milliliters, twice a day, with anti-nausea medicine, for these dogs. That is what one veterinarian wrote for these dogs. It is not a dose for yours. Morning and night, into the tent at the scruff, until they felt better. You do not wait to see if they will die first. Before they just die, you do something. Then you keep doing it until they feel better.",
       },
       {
         kind: "p",
-        text: "Feeling better is not a single wag while the gums are still sticky. It is a dog who is up, whose gums stay wet between the two doses, who is no longer pouring out more than you are putting in. Until then, you do the thing. Before they die, and until they feel better.",
+        text: "Feeling better is not a single wag while the gums are still sticky. It is a dog who is up, whose gums stay wet between the doses the veterinarian scheduled, who is no longer pouring out more than you are putting in. Until then, you do what that veterinarian wrote. Before they die, and until they feel better.",
       },
       {
         kind: "p",
-        text: "A lighter dog needs less. A heavier dog needs more. The same proportion is 500 milliliters for every 60 pounds, twice in the day. A 30-pound dog is half of that, about 250 milliliters each time. The page that follows does the multiplication. It does not add a secret third dose.",
-      },
-      {
-        kind: "p",
-        text: "Before the evening dose, look at the morning pocket. If it is still sitting there, the dog has not absorbed it. Give less, or skip it. A body that is cold does not pull fluid out of the skin. If the pocket never leaves and the dog is getting colder or going limp, stop. That dog needs a vein. Some published clinic sheets use more fluid, more often. More was not what kept these dogs. More, piled onto a pocket that has not absorbed, is how you create a fluid imbalance.",
-      },
-      {
-        kind: "scale",
+        text: "Before the evening dose, look at the morning pocket. If it is still sitting there, the dog has not absorbed it. Give less, or skip it, and call the veterinarian who wrote the plan. A body that is cold does not pull fluid out of the skin. If the pocket never leaves and the dog is getting colder or going limp, stop. That dog needs a vein.",
       },
       {
         kind: "h",
@@ -433,7 +466,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "hospital",
-    numeral: "VII",
+    numeral: "VIII",
     kicker: "One bill, over five thousand dollars",
     title: "Three days in the hospital",
     minutes: 4,
@@ -471,7 +504,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "antibody",
-    numeral: "VIII",
+    numeral: "IX",
     kicker: "The new drug, named plainly",
     title: "The monoclonal antibody",
     minutes: 5,
@@ -507,7 +540,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "clinic",
-    numeral: "IX",
+    numeral: "X",
     kicker: "One receipt, $555",
     title: "The smaller bill",
     minutes: 3,
@@ -533,7 +566,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "home",
-    numeral: "X",
+    numeral: "XI",
     kicker: "What the rest actually recovered on",
     title: "Love, rest, and fluids",
     minutes: 5,
@@ -567,7 +600,7 @@ export const chapters: Chapter[] = [
         kind: "note",
         tone: "stop",
         title: "This chapter is not a how-to",
-        text: "A wrong fluid, a dirty needle, or fluid pushed into muscle instead of the pocket can hurt a dog parvo had not finished with. Have a veterinarian show you the tent the first time. Use the weight and the eight-hour clock in the fluids chapter, and give less or nothing if the last pocket is still sitting there. If the dog is cold, limp, or the lump is not absorbing, stop and get fluid into a vein.",
+        text: "A wrong fluid, a dirty needle, or fluid pushed into muscle instead of the pocket can hurt a dog parvo had not finished with. Have a veterinarian show you the tent the first time. Use the amount and schedule your veterinarian wrote, and give less or nothing if the last pocket is still sitting there. If the dog is cold, limp, or the lump is not absorbing, stop and get fluid into a vein.",
       },
       {
         kind: "h",
@@ -596,7 +629,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "shot",
-    numeral: "XI",
+    numeral: "XII",
     kicker: "The vaccination, put in its place",
     title: "The shot is not the fluids",
     minutes: 4,
@@ -628,7 +661,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "ground",
-    numeral: "XII",
+    numeral: "XIII",
     kicker: "What you can clean, and what you cannot",
     title: "The ground",
     minutes: 3,
@@ -654,7 +687,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "three",
-    numeral: "XIII",
+    numeral: "XIV",
     kicker: "Nothing on this page is for sale",
     title: "For the three",
     minutes: 2,
@@ -670,7 +703,7 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "Eight lived. Only two of the eleven were treated at a clinic. All eight who lived were treated at the house, on fluids and anti-nausea medicine, and nothing else. The only factor the keeper names is dehydration, prevented. Survival is not proof that the cheapest path was right for the sickest dog. Death is not proof that the keeper failed to love them. People said the yard was too small and the dogs should be put down. The keeper knew they could survive. Eight did. Three dried out while time was wasted. Both of those facts are true, and neither one is a lie you get to tell a person burying a dog.",
+        text: "Eight lived. Two of the eight who lived, Villager #1 and Brutus, were treated at a clinic. The other six recovered at the house, on fluids and anti-nausea medicine, and nothing else. The only factor the keeper names is dehydration, prevented. Survival is not proof that the cheapest path was right for the sickest dog. Death is not proof that the keeper failed to love them. People said the yard was too small and the dogs should be put down. The keeper knew they could survive. Eight did. Three dried out while time was wasted. Both of those facts are true, and neither one is a lie you get to tell a person burying a dog.",
       },
       {
         kind: "p",
@@ -684,7 +717,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "take",
-    numeral: "XIV",
+    numeral: "XV",
     kicker: "A list to hold at the counter",
     title: "Take this page in",
     minutes: 3,
@@ -701,7 +734,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "sources",
-    numeral: "XV",
+    numeral: "XVI",
     kicker: "What is memory, and what is medicine",
     title: "Where this came from",
     minutes: 4,
@@ -746,8 +779,8 @@ export const chapters: Chapter[] = [
         items: [
           "Untreated clinical parvovirus kills about nine in ten dogs. With aggressive care, survival is commonly about eight or nine in ten. Clinics, and summaries of the disease published alongside the antibody, repeat those figures. They are not a guarantee.",
           "Elanco’s Canine Parvovirus Monoclonal Antibody is a USDA-licensed veterinary product, given intravenously for treatment, labeled for dogs eight weeks and older. In the controlled challenge work described by the company and by AVMA News, treated dogs had no deaths and recovered faster than placebo dogs when the product was the only drug and it was given the day of the first positive test. Later clinic summaries have reported survival around ninety-three percent and shorter stays. The drug does not replace fluids.",
-          "The yard’s fluid amount, for the dogs who stayed home, was about 500 milliliters twice a day for a dog of about 60 pounds, into a tent of skin at the scruff, with anti-nausea medicine. It was started before the dog died of dehydration, and it was continued until the dog felt better. The book scales that proportion to other weights. It is the keeper’s account, not a national dose.",
-          "Other published outpatient sheets use different volumes. Colorado State’s protocol describes about 120 milliliters per kilogram per day under the skin in three doses, and says to give less if the last pocket has not absorbed, and not to add sugar or potassium to that bag. The 2024 AAHA fluid example of a parvo puppy replaced a deficit in a vein over about twelve hours. A dog who is cold or flat needs that vein. This yard did not use the larger sheet. Do not stack the two plans together.",
+          "What one veterinarian wrote for the dogs who stayed home was about 500 milliliters twice a day for those dogs of about 60 pounds, into a tent of skin at the scruff, with anti-nausea medicine. That is what was written for these dogs. It is not a dose for yours.",
+          "Colorado State University's published outpatient parvo protocol gives much more fluid under the skin than this yard did: about 120 mL per kg per day, split into 3 or 4 doses, plus extra for dehydration. It starts after IV stabilization at a clinic, and a veterinarian examines the dog and checks blood sugar and potassium every day. In that study, more than half the dogs needed sugar or potassium added. Home care only works with a veterinarian running it.",
           "Outpatient care exists for dogs who are not crashing. It still means fluids, nausea control, and a plan to come back. It is a veterinarian’s plan, not a shopping list.",
           "Modified-live parvovirus vaccines protect susceptible dogs in roughly three to five days. Shelter-medicine programs, including Koret and the University of Wisconsin–Madison, and the AAHA shelter vaccination guidance, treat immediate vaccination of healthy dogs as outbreak control. Puppies need a series because maternal antibody blocks the shot. A vaccine does not treat a dog already in clinical parvo.",
           "The virus persists in the environment for months or longer. After organic matter is removed, household bleach diluted about one to thirty-two, left wet for about ten minutes, is the classic way to kill it on a hard surface. You cannot bleach a field.",
@@ -761,7 +794,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: "rights",
-    numeral: "XVI",
+    numeral: "XVII",
     kicker: "Who owns this",
     title: "The rights",
     minutes: 2,
@@ -769,7 +802,7 @@ export const chapters: Chapter[] = [
       {
         kind: "p",
         lead: true,
-        text: "This book belongs to Jessica McIntosh. The yard, the count, and the words are not a free text for someone else to print and sell.",
+        text: "This book belongs to Blue and the Awesome Dudes. The yard, the count, and the words are not a free text for someone else to print and sell.",
       },
       {
         kind: "edition",
@@ -786,7 +819,13 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "Copyright 2026, Jessica McIntosh. All rights reserved. No part of this book may be copied for sale without her leave. Reading it, and handing the count to someone who asked whether the dogs were cared for, is allowed.",
+        text: "Copyright 2026, Blue and the Awesome Dudes. All rights reserved. No part of this book may be copied for sale without our permission. Reading it, and handing the count to someone who asked whether the dogs were cared for, is allowed.",
+      },
+      {
+        kind: "note",
+        tone: "stop",
+        title: "Disclaimer",
+        text: "This book is one family's true story and general information. It is not veterinary advice. Parvo is an emergency. Only a licensed veterinarian can examine, diagnose, prescribe, or set a dose for your dog. If anything here disagrees with your veterinarian, follow your veterinarian. Blue and the Awesome Dudes are not responsible for any outcome.",
       },
     ],
   },
@@ -794,5 +833,5 @@ export const chapters: Chapter[] = [
 
 export const EDITION = {
   year: 2026,
-  holder: "Jessica McIntosh",
+  holder: "Blue and the Awesome Dudes",
 };

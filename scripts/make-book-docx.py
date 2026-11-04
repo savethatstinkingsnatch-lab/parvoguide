@@ -69,8 +69,9 @@ add_p(
     after=12,
 )
 
-add_p("A FIELD BOOK", 9, bold=True, color=CLAY, center=True, after=6, before=18)
+add_p("THE EDUCATION REVOLUTION POCKET GUIDE, VOLUME 14", 9, bold=True, color=CLAY, center=True, after=6, before=18)
 add_p("Eleven Dogs", 26, bold=True, center=True, after=6)
+add_p("by Blue and the Awesome Dudes", 11, italic=True, center=True, after=8)
 add_p(
     "Canine parvovirus, from a yard that lost three — and why the three died of dehydration, not of a missing drug.",
     12,
@@ -85,8 +86,8 @@ add_p(
     center=True,
     after=8,
 )
-add_p("For Villager #2, for Lily, and for Mrs Sassy Fancy Boots.", 12, italic=True, color=CLAY, center=True, after=8)
-add_p(f"Jessica McIntosh. Copyright {edition['year']}. All rights reserved.", 10, color=MUTED, center=True, after=14)
+add_p("Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.", 12, italic=True, color=CLAY, center=True, after=8)
+add_p(f"{edition['holder']}. Copyright {edition['year']}. All rights reserved.", 10, color=MUTED, center=True, after=14)
 
 
 def render(block):
@@ -114,11 +115,6 @@ def render(block):
     elif kind == "take":
         for index, item in enumerate(take, start=1):
             add_p(f"{index}.  {item['text']}", after=4)
-    elif kind == "scale":
-        add_p("The yard’s proportion", 12, bold=True, before=6, after=2)
-        add_p(
-            "About 500 mL in the morning and about 500 mL at night for a dog of about 60 pounds, into the tent at the scruff, until the dog feels better. Half the weight, half the amount. If the last pocket is still there, give less or skip it."
-        )
     elif kind == "edition":
         add_p(f"Copyright {edition['year']}", 12, bold=True, before=6, after=2)
         add_p(
@@ -132,6 +128,13 @@ for chapter in chapters:
     add_p(chapter["title"], 18, bold=True, after=8)
     for block in chapter["blocks"]:
         render(block)
+
+add_p(
+    "Privacy: This guide does not collect your name, email, or any personal information. Checklist marks are saved only on your own device.",
+    10,
+    color=MUTED,
+    before=12,
+)
 
 out = "/workspace/artifacts/Eleven-Dogs.docx"
 doc.save(out)

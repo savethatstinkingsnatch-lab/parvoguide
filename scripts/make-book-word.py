@@ -55,12 +55,6 @@ def blocks_html(blocks):
         elif kind == "take":
             items = "".join(f"<li>{html.escape(item['text'])}</li>" for item in take)
             parts.append(f"<ol>{items}</ol>")
-        elif kind == "scale":
-            parts.append(
-                "<p><b>The yard’s proportion</b><br>About 500 mL in the morning and about 500 mL at night for a dog of about 60 pounds, "
-                "into the tent at the scruff, until the dog feels better. Half the weight, half the amount. "
-                "If the last pocket is still there, give less or skip it.</p>"
-            )
         elif kind == "edition":
             parts.append(
                 f"<p><b>Copyright {html.escape(str(edition['year']))}</b><br>{html.escape(edition['holder'])}. All rights reserved.</p>"
@@ -95,13 +89,6 @@ def blocks_rtf(blocks):
         elif kind == "take":
             for index, item in enumerate(take, start=1):
                 parts.append(rf"\pard\li200\sa80\fs22 {index}.  {rtf_text(item['text'])}\par")
-        elif kind == "scale":
-            parts.append(r"\pard\sb120\sa40\b\fs24 The yard\u8217?s proportion\b0\par")
-            parts.append(
-                r"\pard\sa160\fs22 About 500 mL in the morning and about 500 mL at night for a dog of about 60 pounds, "
-                r"into the tent at the scruff, until the dog feels better. Half the weight, half the amount. "
-                r"If the last pocket is still there, give less or skip it.\par"
-            )
         elif kind == "edition":
             parts.append(rf"\pard\sb120\sa40\b\fs24 Copyright {edition['year']}\b0\par")
             parts.append(
@@ -159,13 +146,15 @@ p {{ margin: 0 0 8pt; }}
 <p class="kicker">HOW TO PRINT THIS AS A SMALL BOOK</p>
 <p>This file is already a small page, 5.5 inches wide by 8.5 inches tall. Delete this note before you print copies for the neighbors.</p>
 <p>To use less paper: File, Print, Pages per sheet, 2. Two of these small pages then sit on one sheet of letter paper. You can also change Layout, Size, if you want the page even smaller.</p>
-<p class="kicker" style="text-align:center">A FIELD BOOK</p>
+<p class="kicker" style="text-align:center">THE EDUCATION REVOLUTION POCKET GUIDE, VOLUME 14</p>
 <h1 style="text-align:center;font-size:26pt">Eleven Dogs</h1>
+<p style="text-align:center">by Blue and the Awesome Dudes</p>
 <p style="text-align:center;font-style:italic">Canine parvovirus, from a yard that lost three — and why the three died of dehydration, not of a missing drug.</p>
 <p style="text-align:center">Eleven dogs, six and a half months old. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000, because they were not allowed to dehydrate.</p>
-<p class="quote" style="text-align:center">For Villager #2, for Lily, and for Mrs Sassy Fancy Boots.</p>
-<p style="text-align:center">Jessica McIntosh. Copyright {html.escape(str(edition['year']))}. All rights reserved.</p>
+<p class="quote" style="text-align:center">Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.</p>
+<p style="text-align:center">{html.escape(edition['holder'])}. Copyright {html.escape(str(edition['year']))}. All rights reserved.</p>
 {''.join(chapter_html)}
+<p>Privacy: This guide does not collect your name, email, or any personal information. Checklist marks are saved only on your own device.</p>
 </div>
 </body>
 </html>
@@ -179,12 +168,14 @@ rtf = (
     r"\pard\sa80\b\fs20 HOW TO PRINT THIS AS A SMALL BOOK\b0\par"
     r"\pard\sa80\fs20 This file is already a small page, 5.5 inches wide by 8.5 inches tall. Delete this note before you print copies for the neighbors.\par"
     r"\pard\sa200\fs20 To use less paper: File, Print, Pages per sheet, 2. Two of these small pages then sit on one sheet of letter paper.\par"
-    r"\pard\sb360\sa80\qc\b\fs18 A FIELD BOOK\b0\par"
+    r"\pard\sb360\sa80\qc\b\fs18 THE EDUCATION REVOLUTION POCKET GUIDE, VOLUME 14\b0\par"
     r"\pard\qc\b\fs52 Eleven Dogs\b0\par"
+    r"\pard\qc\sa80 by Blue and the Awesome Dudes\par"
     r"\pard\qc\sa160\i\fs24 Canine parvovirus, from a yard that lost three \u8212? and why the three died of dehydration, not of a missing drug.\i0\fs22\par"
-    r"\pard\qc\sa160 For Villager #2, for Lily, and for Mrs Sassy Fancy Boots.\par"
-    rf"\pard\qc\sa200 Jessica McIntosh. Copyright {edition['year']}. All rights reserved.\par"
+    r"\pard\qc\sa160 Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.\par"
+    rf"\pard\qc\sa200 {rtf_text(edition['holder'])}. Copyright {edition['year']}. All rights reserved.\par"
     + "\n".join(chapter_rtf)
+    + r"\pard\sa160 Privacy: This guide does not collect your name, email, or any personal information. Checklist marks are saved only on your own device.\par"
     + "}"
 )
 

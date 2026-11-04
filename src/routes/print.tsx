@@ -40,8 +40,9 @@ function PrintBook() {
 
       <article className="mx-auto max-w-prose px-5 py-10">
         <header className="print-cover">
-          <p className="text-xs tracking-widest text-clay">A FIELD BOOK</p>
+          <p className="text-xs tracking-widest text-clay">THE EDUCATION REVOLUTION POCKET GUIDE, VOLUME 14</p>
           <h1 className="mt-4 font-display text-6xl leading-none">Eleven Dogs</h1>
+          <p className="mt-4 text-sm text-muted">by Blue and the Awesome Dudes</p>
           <div className="mt-6 h-px w-24 bg-clay" />
           <p className="mt-6 font-display text-2xl leading-snug">
             Canine parvovirus, from a yard that lost three — and why the three died of dehydration, not of a missing drug.
@@ -50,9 +51,9 @@ function PrintBook() {
             Eleven dogs, six and a half months old. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000, because they were not allowed to dehydrate.
           </p>
           <p className="mt-8 font-display text-xl italic text-clay">
-            For Villager #2, for Lily, and for Mrs Sassy Fancy Boots.
+            Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.
           </p>
-          <p className="mt-6 text-sm text-muted">Jessica McIntosh. Copyright {EDITION.year}. All rights reserved.</p>
+          <p className="mt-6 text-sm text-muted">{EDITION.holder}. Copyright {EDITION.year}. All rights reserved.</p>
         </header>
 
         {chapters.map((chapter) => (
@@ -66,6 +67,9 @@ function PrintBook() {
             <PrintBlocks blocks={chapter.blocks} />
           </section>
         ))}
+        <p className="mt-10 text-sm text-muted">
+          Privacy: This guide does not collect your name, email, or any personal information. Checklist marks are saved only on your own device.
+        </p>
       </article>
     </div>
   );
@@ -129,16 +133,6 @@ function PrintBlocks({ blocks }: { blocks: Block[] }) {
                 <li key={item.id}>{item.text}</li>
               ))}
             </ol>
-          );
-        }
-        if (block.kind === "scale") {
-          return (
-            <aside key={index} className="my-6 border border-line px-4 py-4">
-              <p className="font-display text-lg">The yard’s proportion</p>
-              <p className="mt-2">
-                About 500 mL in the morning and about 500 mL at night for a dog of about 60 pounds, into the tent at the scruff, until the dog feels better. Half the weight, half the amount. If the last pocket is still there, give less or skip it.
-              </p>
-            </aside>
           );
         }
         if (block.kind === "edition") {

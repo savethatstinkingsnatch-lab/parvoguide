@@ -32,9 +32,6 @@ function blocks(list) {
       if (block.kind === "take") {
         return `<ol class="take">${TAKE.map((item) => `<li>${esc(item.text)}</li>`).join("")}</ol>`;
       }
-      if (block.kind === "scale") {
-        return `<aside><strong>The yard’s proportion</strong><p>About 500 mL in the morning and about 500 mL at night for a dog of about 60 pounds, into the tent at the scruff, until the dog feels better. A lighter dog needs less. A heavier dog needs more. Half the weight, half the amount. If the last pocket is still there, give less or skip it.</p></aside>`;
-      }
       if (block.kind === "edition") {
         return `<aside><strong>Copyright ${EDITION.year}</strong><p>${esc(EDITION.holder)}. All rights reserved.</p></aside>`;
       }
@@ -105,13 +102,13 @@ const html = `<!doctype html>
 </head>
 <body>
   <div class="cover">
-    <p class="eyebrow">A field book</p>
+    <p class="eyebrow">The Education Revolution Pocket Guide, Volume 14</p>
     <h1>Eleven Dogs</h1>
     <hr class="rule" />
     <p class="deck">Canine parvovirus, from a yard that lost three — and why the three died of dehydration, not of a missing drug.</p>
     <p class="muted">Eleven dogs, six and a half months old. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000, because they were not allowed to dehydrate.</p>
-    <p class="ded">For Villager #2, for Lily, and for Mrs Sassy Fancy Boots.</p>
-    <p class="by">Jessica McIntosh<br />Copyright ${EDITION.year}. All rights reserved.</p>
+    <p class="ded">Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.</p>
+    <p class="by">by ${EDITION.holder}<br />Copyright ${EDITION.year}. All rights reserved.</p>
   </div>
   <div class="contents">
     <p class="eyebrow">Contents</p>
@@ -119,6 +116,7 @@ const html = `<!doctype html>
     <ol>${toc}</ol>
   </div>
   ${body}
+  <p class="muted">Privacy: This guide does not collect your name, email, or any personal information. Checklist marks are saved only on your own device.</p>
 </body>
 </html>`;
 
