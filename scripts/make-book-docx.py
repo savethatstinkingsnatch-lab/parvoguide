@@ -73,14 +73,14 @@ add_p("THE EDUCATION REVOLUTION POCKET GUIDE, VOLUME 14", 9, bold=True, color=CL
 add_p("Eleven Dogs", 26, bold=True, center=True, after=6)
 add_p("by Blue and the Awesome Dudes", 11, italic=True, center=True, after=8)
 add_p(
-    "Canine parvovirus, from a yard that lost three — and why the three died of dehydration, not of a missing drug.",
+    "Canine parvovirus, from a yard that lost three. The keeper believes late fluids mattered more than a missing drug.",
     12,
     italic=True,
     center=True,
     after=8,
 )
 add_p(
-    "Eleven dogs, six and a half months old. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000, because they were not allowed to dehydrate.",
+    "Eleven dogs, born April 13, six months old when Villager #1 tested positive on October 13. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000.",
     11,
     color=MUTED,
     center=True,
@@ -105,8 +105,8 @@ def render(block):
         for item in block["items"]:
             add_p("•  " + item, after=3)
     elif kind == "tally":
-        add_p("3 died while the next fluids were still away.", 12, bold=True, before=6, after=2)
-        add_p("8 lived. They were not allowed to dehydrate.", 12, bold=True, after=8)
+        add_p("3 died while fluids were late. The keeper believes the delay mattered.", 12, bold=True, before=6, after=2)
+        add_p("8 lived. In the keeper’s view, they were not allowed to dehydrate.", 12, bold=True, after=8)
     elif kind == "paths":
         for path in paths:
             add_p(f"{path['who']} · {path['where']}", 10, bold=True, color=CLAY, before=8, after=1)

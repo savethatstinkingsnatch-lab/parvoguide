@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "A field book on canine parvovirus. Eleven dogs at six and a half months. Three lost to dehydration. Eight saved by fluid under the skin, not a fifty-five-thousand-dollar bill.",
+          "A field book on canine parvovirus. Eleven dogs, six months old. Three lost while fluids were late. Eight lived. Not veterinary advice.",
       },
       { name: "theme-color", content: "#221c16" },
     ],

@@ -52,7 +52,7 @@ export const CARE_PATHS = [
 export const TAKE = [
   {
     id: "line",
-    text: "Say it before you sit down: my dog needs an IV line now. We can talk about other drugs after it is running.",
+    text: "Say it before you sit down: this dog needs to be seen now. Ask the veterinarian which fluid route is right. We can talk about other drugs after that.",
   },
   {
     id: "nausea",
@@ -111,7 +111,7 @@ export const chapters: Chapter[] = [
         kind: "note",
         tone: "stop",
         title: "If a dog is sick right now",
-        text: "Stop reading. Call a veterinarian or an emergency clinic. If the dog is vomiting, has diarrhea, is limp, or will not eat, say that you need intravenous fluids started now. Come back to this page after the line is in.",
+        text: "Stop reading. Call a veterinarian or an emergency clinic. If the dog is vomiting, has diarrhea, is limp, or will not eat, this is an urgent veterinary assessment. Ask the veterinarian which fluid route is appropriate. Come back to this page after the dog has been seen.",
       },
       {
         kind: "p",
@@ -119,7 +119,7 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "What the yard does teach is narrower, and harder to dodge. Eleven dogs, six and a half months old. Three died of dehydration because fluids were late. People played with the time, blamed a small yard, and said to put them down. The keeper knew they could survive. Eight did. The only factor the keeper credits is that those eight were not allowed to get dehydrated. The whole effort cost about ten thousand dollars. It did not cost fifty-five thousand.",
+        text: "What the yard does teach is narrower, and harder to dodge. Eleven dogs, born April 13. Villager #1 tested positive on October 13. They were six months old. Three died while fluids were still late. The keeper believes that delay contributed. It is not a proven cause for each dog. Lily was put down. People played with the time, blamed a small yard, and said to put them down. The keeper knew they could survive. Eight did. In the keeper’s view, the eight were not allowed to get dehydrated. The whole effort cost about ten thousand dollars. It did not cost fifty-five thousand.",
       },
       {
         kind: "p",
@@ -172,11 +172,11 @@ export const chapters: Chapter[] = [
       {
         kind: "p",
         lead: true,
-        text: "There were eleven dogs. They were six and a half months old.",
+        text: "There were eleven dogs. They were born on April 13. Villager #1 tested positive on October 13. They were six months old, not six and a half.",
       },
       {
         kind: "p",
-        text: "Coyotes live around that place. It was a drought. The fields were dry enough to lift. When the farmers began to plow, dust kicked into the air and covered the dogs and the ground they lived on. After that, the dogs got sick with parvo.",
+        text: "Coyotes live around that place. It was a drought. The fields were dry enough to lift. When the farmers began to plow, dust kicked into the air and covered the dogs and the ground they lived on. After that, the dogs got sick with parvo. Dust is one possible way contaminated soil might have been moved. It is not a known source.",
       },
       {
         kind: "p",
@@ -205,7 +205,7 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "Three of the eleven died. Villager #2 died on the way to the hospital. Lily was put down. Mrs Sassy Fancy Boots died on the floor at home. They did not die because the yard was small, or because a rare drug was missing. They died while the next fluids were still on the road.",
+        text: "Three of the eleven died. Villager #2 died on the way to the hospital. Lily was put down. Mrs Sassy Fancy Boots died on the floor at home. They did not die because the yard was small, or because a rare drug was missing. The keeper believes the delay in fluids contributed. That belief is not a proven cause for each dog. Lily’s death was a decision made after a poor prognosis.",
       },
       {
         kind: "note",
@@ -222,7 +222,7 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "Villager #1 was sick first. He stayed three days at clinic 1. Lily got sick while he was still there. Then Villager #2, who died on the way to the hospital. Mrs Sassy Fancy Boots was seen at clinic 2, on emergency time, and received only fluids. Brutus was brought back to that same clinic for fluids and a shot, and he lived. She died on the floor at home because the way back took too long. The dogs were six and a half months old. Eight lived. All of it cost about ten thousand dollars. It did not cost fifty-five.",
+        text: "Villager #1 was sick first. He stayed three days at clinic 1. Lily got sick while he was still there. Then Villager #2, who died on the way to the hospital. Mrs Sassy Fancy Boots was seen at clinic 2, on emergency time, and received only fluids. Brutus was brought back to that same clinic for fluids and a shot, and he lived. She died on the floor at home because the way back took too long. The dogs were six months old. Eight lived. All of it cost about ten thousand dollars. It did not cost fifty-five.",
       },
       {
         kind: "p",
@@ -274,7 +274,7 @@ export const chapters: Chapter[] = [
         kind: "note",
         tone: "fact",
         title: "The odds, said carefully",
-        text: "Without treatment, about nine in ten dogs with clinical parvo die. With aggressive veterinary care, survival is often put around eight or nine in ten, and higher in some hospitals. Those are populations, not promises. A dog can be treated properly and still die. A dog can look nearly gone and walk out. This yard ended at three dead and eight alive. That count is true. It is not a rate you can take to another kennel and trust.",
+        text: "Without treatment, clinical parvo is often fatal. With appropriate supportive care, the Merck Veterinary Manual puts survival around 70 to 90 percent. Those are populations, not promises. A dog can be treated properly and still die. A dog can look nearly gone and walk out. This yard ended at three dead and eight alive. That count is true. It is not a rate you can take to another kennel and trust.",
       },
     ],
   },
@@ -282,17 +282,17 @@ export const chapters: Chapter[] = [
     id: "clock",
     numeral: "V",
     kicker: "Why the three did not come back",
-    title: "They died dry",
+    title: "The fluids were late",
     minutes: 6,
     blocks: [
       {
         kind: "p",
         lead: true,
-        text: "Parvo empties a dog. Fluid leaves in vomit. Fluid leaves in diarrhea. The dog will not drink, or drinks and gives it back. Potassium falls. Sugar falls, especially in the young, who have little stored. The feet get cold. The gums go from moist to tacky to pale. Then the dog is too tired to stand. Then the dog is gone.",
+        text: "Parvo empties a dog. Fluid leaves in vomit. Fluid leaves in diarrhea. The dog will not drink, or drinks and gives it back. Potassium can fall. Sugar can fall, especially in the young, who have little stored. The feet get cold. The gums go from moist to tacky to pale. Then the dog is too tired to stand. Dehydration can kill. So can a bloodstream infection, and so can a crash in blood sugar or electrolytes. Looking at a dog cannot sort those causes apart.",
       },
       {
         kind: "p",
-        text: "That sequence can take a day. In a small puppy it can take a few hours. A careful clinic will still name the virus as the cause. The thing that stops the heart, in the ordinary case, is a body with not enough volume left to circulate.",
+        text: "That sequence can take a day. In a small puppy it can take a few hours. A careful clinic will still name the virus as the disease. This book cannot name the thing that stopped each heart. Lily was put down. The others died while fluids were still away. The keeper believes the delay contributed. That is a belief, not an autopsy.",
       },
       {
         kind: "note",
@@ -360,11 +360,11 @@ export const chapters: Chapter[] = [
       {
         kind: "p",
         lead: true,
-        text: "The illness showed itself after the plowing started. The keeper’s memory is specific. Drought. Coyotes living around the place. Farmers turning dry fields. Dust kicked into the air, onto the dogs, onto everything. The dogs were six and a half months old.",
+        text: "The illness showed itself after the plowing started. The keeper’s memory is specific. Drought. Coyotes living around the place. Farmers turning dry fields. Dust kicked into the air, onto the dogs, onto everything. The dogs were six months old.",
       },
       {
         kind: "p",
-        text: "Parvovirus is not a germ that dirt invents when the weather is bad, and a small yard does not invent it either. Dogs shed it in feces. Coyotes and other dogs can carry it through a dry country and leave it where a yard can meet it. It sits in soil because it is hard to kill. A plow in a drought lifts whatever is in that soil and throws it across the dogs. They breathe dust. They lick dusty coats. They drink from bowls the dust has settled into.",
+        text: "Parvovirus is not a germ that dirt invents when the weather is bad, and a small yard does not invent it either. Dogs shed it in feces. Other dogs can leave it where a yard can meet it. It sits in soil because it is hard to kill. A plow in a drought can lift that soil and throw dust across a yard. Dust is a possible way contaminated soil might have been moved. It is not a known source, and breathing dust is not the route veterinary sources describe. Dogs take the virus in by mouth, from feces and from contaminated ground, shoes, bowls, and other dogs.",
       },
       {
         kind: "p",
@@ -372,7 +372,7 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "Do not wait for a field to be turned before you vaccinate. Do not blame a plow, or a coyote, or the size of a yard, and then skip the fluids. The order the keeper saw is part of the record. Dust, then sick dogs, then a choice between water and a death sentence. No one can prove the plow dust carried the virus. Parvo spreads through infected stool, soil, shoes, and other dogs. That is what to guard against.",
+        text: "Do not wait for a field to be turned before you vaccinate. Do not blame a plow, or a coyote, or the size of a yard, and then skip a veterinarian. The order the keeper remembers is dust, then sick dogs. That order is a memory. No one can prove the plow dust carried the virus. Parvo spreads when a dog takes in virus shed in feces, and when it meets contaminated soil, shoes, and other dogs. That is what to guard against.",
       },
     ],
   },
@@ -416,7 +416,7 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "The keeper’s dogs weighed about sixty pounds. One veterinarian wrote about 500 milliliters, twice a day, with anti-nausea medicine, for these dogs. That is what one veterinarian wrote for these dogs. It is not a dose for yours. Morning and night, into the tent at the scruff, until they felt better. You do not wait to see if they will die first. Before they just die, you do something. Then you keep doing it until they feel better.",
+        text: "The keeper’s dogs weighed about sixty pounds. One veterinarian wrote about 500 milliliters, twice a day, with anti-nausea medicine, for these dogs, into the tent at the scruff, until they felt better. That is what one veterinarian wrote for these dogs. It is not a dose for yours, and it is not a route for yours. The route depends on the dog in front of the veterinarian. Fluid under the skin may be chosen when dehydration is milder. A vein is preferred when dehydration is severe, or when the dog cannot keep water down. Published outpatient care is still a veterinarian’s plan, and the dog is still checked. You do not wait to see if they will die first. Before they just die, you get them seen.",
       },
       {
         kind: "p",
@@ -454,7 +454,7 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "If the answer is a wait, ask who will start fluids sooner, and go there. The monoclonal antibody can be discussed with the drip already going. The antibiotic can be discussed with the drip already going. The estimate can be printed with the drip already going. The three in this yard did not get that order. They died dry.",
+        text: "If the answer is a wait, ask who can see the dog sooner, and go there. Ask that veterinarian which fluid route is appropriate. The monoclonal antibody can be discussed once care has started. The antibiotic can be discussed once care has started. The estimate can be printed once care has started. The three in this yard did not get that order. The keeper believes the delay in fluids contributed. That is not a finding that names the medical cause of each death. Lily was put down.",
       },
       {
         kind: "note",
@@ -651,7 +651,7 @@ export const chapters: Chapter[] = [
         kind: "note",
         tone: "care",
         title: "Keep both facts, in this order",
-        text: "Vaccinate the dogs who are still well, the day you know parvo is in the yard. Do it because three to five days is a real window, and dust does not wait. Then go to the sick ones and talk about fluids, not about the syringe you just used on their kennel-mates.",
+        text: "Vaccinate the dogs who are still well, the day you know parvo is in the yard. Do it because three to five days is a real window for a healthy dog, and the virus does not wait. Then go to the sick ones and talk about a veterinarian, not about the syringe you just used on their kennel-mates.",
       },
       {
         kind: "p",
@@ -703,11 +703,11 @@ export const chapters: Chapter[] = [
       },
       {
         kind: "p",
-        text: "Eight lived. Two of the eight who lived, Villager #1 and Brutus, were treated at a clinic. The other six recovered at the house, on fluids and anti-nausea medicine, and nothing else. The only factor the keeper names is dehydration, prevented. Survival is not proof that the cheapest path was right for the sickest dog. Death is not proof that the keeper failed to love them. People said the yard was too small and the dogs should be put down. The keeper knew they could survive. Eight did. Three dried out while time was wasted. Both of those facts are true, and neither one is a lie you get to tell a person burying a dog.",
+        text: "Eight lived. Two of the eight who lived, Villager #1 and Brutus, were treated at a clinic. The other six recovered at the house, on fluids and anti-nausea medicine, and nothing else. In the keeper’s view, the eight were not allowed to dehydrate. Survival is not proof that the cheapest path was right for the sickest dog. Death is not proof that the keeper failed to love them. People said the yard was too small and the dogs should be put down. The keeper knew they could survive. Eight did. The keeper believes three were lost while time was wasted. Parvo can also cause bloodstream infection and dangerous changes in blood sugar and electrolytes. This account cannot assign one cause to each death. Both the count and the uncertainty are true, and neither one is a lie you get to tell a person burying a dog.",
       },
       {
         kind: "p",
-        text: "If you are reading this with a dog in the car, you already know which chapter matters. Fluids first. The rest of the book will wait. If you are reading this after, and the dog is gone, the wait is the thing to be angry at. Not the fact that you are not a hospital. Not the dust, by itself. Not a shot you did or did not give. The clock. Three dogs dried out while time was spent on something other than a vein.",
+        text: "If you are reading this with a dog in the car, you already know which chapter matters. Get the dog seen. Ask which fluid route is appropriate. The rest of the book will wait. If you are reading this after, and the dog is gone, the wait is the thing to be angry at. Not the fact that you are not a hospital. Not the dust, by itself. Not a shot you did or did not give. The clock. The keeper believes three were lost while time was spent on something other than getting fluids. That belief is not a cause of death for each dog.",
       },
       {
         kind: "quote",
@@ -777,13 +777,14 @@ export const chapters: Chapter[] = [
       {
         kind: "list",
         items: [
-          "Untreated clinical parvovirus kills about nine in ten dogs. With aggressive care, survival is commonly about eight or nine in ten. Clinics, and summaries of the disease published alongside the antibody, repeat those figures. They are not a guarantee.",
-          "Elanco’s Canine Parvovirus Monoclonal Antibody is a USDA-licensed veterinary product, given intravenously for treatment, labeled for dogs eight weeks and older. In the controlled challenge work described by the company and by AVMA News, treated dogs had no deaths and recovered faster than placebo dogs when the product was the only drug and it was given the day of the first positive test. Later clinic summaries have reported survival around ninety-three percent and shorter stays. The drug does not replace fluids.",
-          "What one veterinarian wrote for the dogs who stayed home was about 500 milliliters twice a day for those dogs of about 60 pounds, into a tent of skin at the scruff, with anti-nausea medicine. That is what was written for these dogs. It is not a dose for yours.",
-          "Colorado State University's published outpatient parvo protocol gives much more fluid under the skin than this yard did: about 120 mL per kg per day, split into 3 or 4 doses, plus extra for dehydration. It starts after IV stabilization at a clinic, and a veterinarian examines the dog and checks blood sugar and potassium every day. In that study, more than half the dogs needed sugar or potassium added. Home care only works with a veterinarian running it.",
-          "Outpatient care exists for dogs who are not crashing. It still means fluids, nausea control, and a plan to come back. It is a veterinarian’s plan, not a shopping list.",
-          "Modified-live parvovirus vaccines protect susceptible dogs in roughly three to five days. Shelter-medicine programs, including Koret and the University of Wisconsin–Madison, and the AAHA shelter vaccination guidance, treat immediate vaccination of healthy dogs as outbreak control. Puppies need a series because maternal antibody blocks the shot. A vaccine does not treat a dog already in clinical parvo.",
-          "The virus persists in the environment for months or longer. After organic matter is removed, household bleach diluted about one to thirty-two, left wet for about ten minutes, is the classic way to kill it on a hard surface. You cannot bleach a field.",
+          "Merck Veterinary Manual, “Canine Parvovirus Infection.” With appropriate supportive care, about 70 to 90 percent of dogs survive. Untreated disease is often fatal. The virus is taken in from feces or from contaminated objects and places. It can also cause septic shock, low blood sugar, and electrolyte trouble. https://www.merckvetmanual.com/digestive-system/infectious-diseases-of-the-gastrointestinal-tract-in-small-animals/canine-parvovirus-infection-parvoviral-enteritis-in-dogs",
+          "Elanco Canine Parvovirus Monoclonal Antibody, for use by or under the supervision of a veterinarian, labeled for dogs eight weeks and older, given in a vein for treatment. In the company’s challenge work, treated dogs had no deaths when the product was the only drug and it was given the day of the first positive test. The drug does not replace fluids. Label summary: https://www.drugs.com/vet/canine-parvovirus-monoclonal-antibody.html Product page: https://my.elanco.com/us/parvovirus Larson L, et al., Journal of the American Veterinary Medical Association, 2024;262(4):506–512.",
+          "What one veterinarian wrote for the dogs who stayed home was about 500 milliliters twice a day for those dogs of about 60 pounds, into a tent of skin at the scruff, with anti-nausea medicine. That is what was written for these dogs. It is not a dose for yours, and it is not a route for yours.",
+          "Colorado State University outpatient parvovirus protocol, updated May 27, 2013, republished by Maddie’s Fund. After intravenous resuscitation, subcutaneous crystalloid at 120 mL per kg per day, divided into three doses, plus extra to replace dehydration. Do not add sugar or potassium to that bag. If the last pocket is still there, give less or skip it. A veterinarian is still running the plan. https://maddiesfund.org/assets/documents/Institute/Treating%20the%20Treatables%20-%20CSU%20Outpatient%20Parvo%20Protocol.pdf",
+          "2024 AAHA Fluid Therapy Guidelines for Dogs and Cats. The route depends on how dry the dog is and whether it can take fluid by mouth. A dog in shock needs a vein. Dehydration may be treated by vein, under the skin, by mouth, or by a combination. One rate does not fit every dog. https://www.aaha.org/resources/2024-aaha-fluid-therapy-guidelines-for-dogs-and-cats/",
+          "Outpatient care exists for dogs who are not crashing. It still means fluids, nausea control, and a plan to come back. It is a veterinarian’s plan, not a shopping list. The same AAHA page is the reference.",
+          "Koret Shelter Medicine Program, University of California, Davis. A modified-live parvovirus vaccine is described as protecting healthy adult dogs within about three to five days. Puppies need a series because maternal antibody can block the shot. A vaccine does not treat a dog already sick with parvo. https://www.sheltermedicine.com/library/resources/risk-assessment-in-case-of-parvovirus-outbreak",
+          "Merck Veterinary Manual, same page as the first item. After dirt is removed, household bleach at about one part bleach to thirty parts water can inactivate the virus on a hard surface that stays wet. You cannot bleach a field. The virus can persist outdoors for months.",
         ],
       },
       {

@@ -31,7 +31,7 @@ function Tally() {
     <div className="my-10 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line">
       <div className="bg-clay px-5 py-6 text-paper">
         <p className="font-display text-5xl leading-none">3</p>
-        <p className="mt-3 text-sm leading-snug">died of dehydration. Fluids were late.</p>
+        <p className="mt-3 text-sm leading-snug">died while fluids were late. The keeper believes the delay mattered.</p>
       </div>
       <div className="bg-paper px-5 py-6 text-ink">
         <p className="font-display text-5xl leading-none">8</p>
@@ -328,10 +328,10 @@ export function BookApp() {
                 <p className="mt-4 text-sm text-muted">by Blue and the Awesome Dudes</p>
                 <div className="mt-6 h-px w-24 bg-clay" />
                 <p className="mt-6 font-display text-2xl leading-snug text-ink">
-                  Canine parvovirus, from a yard that lost three — and why the three died of dehydration, not of a missing drug.
+                  Canine parvovirus, from a yard that lost three. The keeper believes late fluids mattered more than a missing drug.
                 </p>
                 <p className="mt-6 text-lg leading-relaxed text-muted">
-                  Eleven dogs, six and a half months old. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000, because they were not allowed to dehydrate. Fluid in a tent of skin at the scruff. Not in the muscle.
+                  Eleven dogs, born April 13, six months old when Villager #1 tested positive on October 13. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000. In the keeper’s view, they were not allowed to dehydrate. Fluid under the skin was what one veterinarian wrote for these dogs. It is not a dose for yours.
                 </p>
                 <p className="mt-8 font-display text-xl italic text-clay">Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.</p>
                 <p className="mt-4 text-sm text-muted">The rights belong to Blue and the Awesome Dudes.</p>

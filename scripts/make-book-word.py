@@ -45,7 +45,7 @@ def blocks_html(blocks):
             items = "".join(f"<li>{html.escape(item)}</li>" for item in block["items"])
             parts.append(f"<ul>{items}</ul>")
         elif kind == "tally":
-            parts.append("<p><b>3</b> died while the next fluids were still away.<br><b>8</b> lived. They were not allowed to dehydrate.</p>")
+            parts.append("<p><b>3</b> died while fluids were late. The keeper believes the delay mattered.<br><b>8</b> lived. In the keeper’s view, they were not allowed to dehydrate.</p>")
         elif kind == "paths":
             for path in paths:
                 parts.append(
@@ -79,8 +79,8 @@ def blocks_rtf(blocks):
             for item in block["items"]:
                 parts.append(rf"\pard\li280\sa60\fs22 \bullet  {rtf_text(item)}\par")
         elif kind == "tally":
-            parts.append(r"\pard\sb120\sa40\b\fs24 3 died while the next fluids were still away.\par")
-            parts.append(r"\pard\sa160\b\fs24 8 lived. They were not allowed to dehydrate.\b0\fs22\par")
+            parts.append(r"\pard\sb120\sa40\b\fs24 3 died while fluids were late. The keeper believes the delay mattered.\par")
+            parts.append(r"\pard\sa160\b\fs24 8 lived. In the keeper\u8217?s view, they were not allowed to dehydrate.\b0\fs22\par")
         elif kind == "paths":
             for path in paths:
                 parts.append(rf"\pard\sb160\sa20\b\fs20 {rtf_text(path['who'] + ' · ' + path['where'])}\b0\par")
@@ -149,8 +149,8 @@ p {{ margin: 0 0 8pt; }}
 <p class="kicker" style="text-align:center">THE EDUCATION REVOLUTION POCKET GUIDE, VOLUME 14</p>
 <h1 style="text-align:center;font-size:26pt">Eleven Dogs</h1>
 <p style="text-align:center">by Blue and the Awesome Dudes</p>
-<p style="text-align:center;font-style:italic">Canine parvovirus, from a yard that lost three — and why the three died of dehydration, not of a missing drug.</p>
-<p style="text-align:center">Eleven dogs, six and a half months old. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000, because they were not allowed to dehydrate.</p>
+<p style="text-align:center;font-style:italic">Canine parvovirus, from a yard that lost three. The keeper believes late fluids mattered more than a missing drug.</p>
+<p style="text-align:center">Eleven dogs, born April 13, six months old when Villager #1 tested positive on October 13. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000.</p>
 <p class="quote" style="text-align:center">Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.</p>
 <p style="text-align:center">{html.escape(edition['holder'])}. Copyright {html.escape(str(edition['year']))}. All rights reserved.</p>
 {''.join(chapter_html)}
@@ -171,7 +171,7 @@ rtf = (
     r"\pard\sb360\sa80\qc\b\fs18 THE EDUCATION REVOLUTION POCKET GUIDE, VOLUME 14\b0\par"
     r"\pard\qc\b\fs52 Eleven Dogs\b0\par"
     r"\pard\qc\sa80 by Blue and the Awesome Dudes\par"
-    r"\pard\qc\sa160\i\fs24 Canine parvovirus, from a yard that lost three \u8212? and why the three died of dehydration, not of a missing drug.\i0\fs22\par"
+    r"\pard\qc\sa160\i\fs24 Canine parvovirus, from a yard that lost three. The keeper believes late fluids mattered more than a missing drug.\i0\fs22\par"
     r"\pard\qc\sa160 Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.\par"
     rf"\pard\qc\sa200 {rtf_text(edition['holder'])}. Copyright {edition['year']}. All rights reserved.\par"
     + "\n".join(chapter_rtf)

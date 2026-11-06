@@ -21,7 +21,7 @@ function blocks(list) {
         return `<ul>${block.items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>`;
       }
       if (block.kind === "tally") {
-        return `<div class="tally"><div><b>3</b><span>died while the next fluids were still away</span></div><div><b>8</b><span>lived. They were not allowed to dehydrate.</span></div></div>`;
+        return `<div class="tally"><div><b>3</b><span>died while fluids were late. The keeper believes the delay mattered.</span></div><div><b>8</b><span>lived. In the keeper’s view, they were not allowed to dehydrate.</span></div></div>`;
       }
       if (block.kind === "paths") {
         return CARE_PATHS.map(
@@ -105,8 +105,8 @@ const html = `<!doctype html>
     <p class="eyebrow">The Education Revolution Pocket Guide, Volume 14</p>
     <h1>Eleven Dogs</h1>
     <hr class="rule" />
-    <p class="deck">Canine parvovirus, from a yard that lost three — and why the three died of dehydration, not of a missing drug.</p>
-    <p class="muted">Eleven dogs, six and a half months old. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000, because they were not allowed to dehydrate.</p>
+    <p class="deck">Canine parvovirus, from a yard that lost three. The keeper believes late fluids mattered more than a missing drug.</p>
+    <p class="muted">Eleven dogs, born April 13, six months old when Villager #1 tested positive on October 13. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000.</p>
     <p class="ded">Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.</p>
     <p class="by">by ${EDITION.holder}<br />Copyright ${EDITION.year}. All rights reserved.</p>
   </div>

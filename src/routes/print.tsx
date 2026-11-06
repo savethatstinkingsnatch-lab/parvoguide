@@ -45,10 +45,10 @@ function PrintBook() {
           <p className="mt-4 text-sm text-muted">by Blue and the Awesome Dudes</p>
           <div className="mt-6 h-px w-24 bg-clay" />
           <p className="mt-6 font-display text-2xl leading-snug">
-            Canine parvovirus, from a yard that lost three — and why the three died of dehydration, not of a missing drug.
+            Canine parvovirus, from a yard that lost three. The keeper believes late fluids mattered more than a missing drug.
           </p>
           <p className="mt-6 leading-relaxed text-muted">
-            Eleven dogs, six and a half months old. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000, because they were not allowed to dehydrate.
+            Eleven dogs, born April 13, six months old when Villager #1 tested positive on October 13. Dust, drought, coyotes, a small yard. Eight saved for about $10,000, not $55,000. In the keeper’s view, they were not allowed to dehydrate.
           </p>
           <p className="mt-8 font-display text-xl italic text-clay">
             Dedicated to Villager #2, Lily, and Mrs Sassy Fancy Boots.
@@ -108,7 +108,7 @@ function PrintBlocks({ blocks }: { blocks: Block[] }) {
         if (block.kind === "tally") {
           return (
             <div key={index} className="my-6 grid grid-cols-2 gap-6">
-              <p><span className="block font-display text-5xl">3</span>died while the next fluids were still away</p>
+              <p><span className="block font-display text-5xl">3</span>died while fluids were late. The keeper believes the delay mattered.</p>
               <p><span className="block font-display text-5xl">8</span>lived. They were not allowed to dehydrate.</p>
             </div>
           );
