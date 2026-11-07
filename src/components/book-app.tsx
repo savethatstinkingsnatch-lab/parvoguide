@@ -203,7 +203,7 @@ export function BookApp() {
   useEffect(() => {
     if (!ready) return;
     localStorage.setItem(PLACE_KEY, String(place));
-    document.title = chapter ? `${chapter.title} — Parvo: Eleven Dogs` : "Parvo: Eleven Dogs";
+    document.title = chapter ? `${chapter.title} — Volume 14: Parvo` : "Volume 14: Parvo";
     window.scrollTo(0, 0);
   }, [ready, place, chapter]);
 
@@ -241,7 +241,7 @@ export function BookApp() {
   const rail = (
     <nav aria-label="Chapters" className="flex flex-col gap-1">
       <button type="button" onClick={() => { setPlace(0); setToc(false); }} className="px-3 py-2 text-left">
-        <span className="block font-display text-lg leading-tight text-ink">Parvo: Eleven Dogs</span>
+        <span className="block font-display text-lg leading-tight text-ink">Volume 14: Parvo</span>
         <span className="text-sm text-muted">Cover</span>
       </button>
       {chapters.map((item, index) => {
@@ -284,7 +284,7 @@ export function BookApp() {
                 <List className="h-5 w-5" />
               </button>
               <p className="min-w-0 flex-1 truncate text-sm text-muted">
-                {chapter ? `${chapter.numeral}  ${chapter.title}` : "Parvo: Eleven Dogs"}
+                {chapter ? `${chapter.numeral}  ${chapter.title}` : "Volume 14: Parvo"}
               </p>
               <button
                 type="button"
@@ -323,8 +323,8 @@ export function BookApp() {
           {place === 0 ? (
             <main className="page-in px-5 pb-24 pt-12 lg:px-10 lg:pt-20">
               <div className="mx-auto max-w-prose">
-                <p className="text-xs tracking-widest text-clay">THE EDUCATION REVOLUTION POCKET GUIDE, VOLUME 14</p>
-                <h1 className="mt-4 font-display text-6xl leading-none text-ink sm:text-7xl">Eleven Dogs</h1>
+                <p className="text-xs tracking-widest text-clay">THE EDUCATION REVOLUTION · VOLUME 14</p>
+                <h1 className="mt-4 font-display text-6xl leading-none text-ink sm:text-7xl">Volume 14: Parvo</h1>
                 <p className="mt-4 text-sm text-muted">by Blue and the Awesome Dudes</p>
                 <div className="mt-6 h-px w-24 bg-clay" />
                 <p className="mt-6 font-display text-2xl leading-snug text-ink">
